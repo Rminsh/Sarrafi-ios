@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import Lottie
+import MBProgressHUD
 
 class MainController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
@@ -16,8 +18,9 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var emptyStateStackView: UIStackView!
     @IBOutlet weak var emptyStateLabel: UILabel!
     @IBOutlet weak var emptyStateButton: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var emptyStateLottie: AnimationView!
     
+    var refresher: UIRefreshControl!
     var currencyStats = [CurrencyModel]()
     private let spacing:CGFloat = 5
     
@@ -53,7 +56,19 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sendCurrencyRequest()
+        
+        emptyStateLottie.loopMode = .loop
+        refresher = UIRefreshControl()
+        refresher.attributedTitle = NSAttributedString(string: "به روزرسانی اطلاعات" , attributes: [NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 12)!])
+        refresher.addTarget(self, action: #selector(self.refresh), for: UIControl.Event.valueChanged)
+        currencyCollection.backgroundView = refresher
+        showLoading()
+        
+        if (Reachability.isConnectedToNetwork()) {
+            sendCurrencyRequest()
+        } else {
+            showError(error: "به اینترنت متصل نیستید")
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -68,14 +83,24 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
          get http://call.tgju.org/ajax.json
          */
 
+        let configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = . reloadIgnoringLocalAndRemoteCacheData
+
+        var req = URLRequest(url: URL(string: "https://call.tgju.org/ajax.json")!)
+        req.httpMethod = "GET"
+        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        req.setValue("application/json", forHTTPHeaderField: "Accept")
+        req.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        
         // Fetch Request
-        AF.request("https://call.tgju.org/ajax.json", method: .get)
+        AF.request(req)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 self.currencyStats = [CurrencyModel]()
                 self.currencyCollection.reloadData()
                 
-                self.activityIndicator.isHidden = true
+                self.emptyStateLottie.stop()
+                self.refresher.endRefreshing()
                 self.emptyStateStackView.isHidden = true
                 
                 switch response.result {
@@ -119,14 +144,19 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
                         
                     } catch {
                         print(error)
-                        self.emptyStateStackView.isHidden = false
-                        self.emptyStateLabel.text = "خطا در بارگزاری اطلاعات"
-                        self.emptyStateButton.isHidden = false
+                        if (self.currencyStats.isEmpty) {
+                            self.showError(error: "خطا در بارگزاری اطلاعات")
+                        } else {
+                            self.failedHUD(error: "خطا در بارگزاری اطلاعات")
+                        }
+                        
                     }
                 case .failure:
-                    self.emptyStateStackView.isHidden = false
-                    self.emptyStateLabel.text = "خطا در ارسال درخواست"
-                    self.emptyStateButton.isHidden = false
+                    if (self.currencyStats.isEmpty) {
+                        self.showError(error: "خطا در ارسال درخواست")
+                    } else {
+                        self.failedHUD(error: "خطا در ارسال درخواست")
+                    }
                 }
             }
     }
@@ -144,5 +174,51 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
             priceChange: currencyObject.d,
             updateTime: currencyObject.t))
     }
+    
+    func showLoading() {
+        emptyStateStackView.isHidden = false
+        emptyStateLabel.isHidden = true
+        emptyStateButton.isHidden = true
+        emptyStateLottie.animation = Animation.named("loading_animation")
+        emptyStateLottie.play()
+    }
+    
+    func showError(error: String) {
+        emptyStateStackView.isHidden = false
+        emptyStateButton.isHidden = false
+        emptyStateLabel.isHidden = false
+        emptyStateLabel.text = error
+        emptyStateLottie.animation = Animation.named("no_internet_connection")
+        emptyStateLottie.play()
+    }
+    
+    func failedHUD(error : String) {
+        let hudInternet = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hudInternet.mode = MBProgressHUDMode.customView
+        hudInternet.customView = UIImageView(image: #imageLiteral(resourceName: "ic_error"))
+        hudInternet.label.attributedText = NSAttributedString(string: error , attributes: [NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 14)!])
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
+            hudInternet.hide(animated: true)
+        })
+    }
 
+    @IBAction func tryAgainPressed(_ sender: Any) {
+        showLoading()
+        if (Reachability.isConnectedToNetwork()) {
+            sendCurrencyRequest()
+        } else {
+            showError(error: "به اینترنت متصل نیستید")
+        }
+    }
+    
+    @objc func refresh() {
+        refresher.endRefreshing()
+        if Reachability.isConnectedToNetwork() {
+            sendCurrencyRequest()
+        } else {
+            self.failedHUD(error: "به اینترنت متصل نیستید")
+            refresher.endRefreshing()
+        }
+    }
 }

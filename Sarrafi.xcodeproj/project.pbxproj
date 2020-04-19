@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C610DF40244C93A3005B250E /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = C610DF3F244C93A3005B250E /* Charts */; };
+		C610DF46244C965A005B250E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C610DF45244C965A005B250E /* Lottie */; };
 		C61743E6244C43220085E2B2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61743E5244C43220085E2B2 /* NavigationController.swift */; };
 		C62B700423DAFFBD00BC4E1F /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B700323DAFFBD00BC4E1F /* CurrencyModel.swift */; };
+		C66F488A244C9A7F00C19912 /* loading_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = C66F4889244C9A7F00C19912 /* loading_animation.json */; };
+		C66F488C244C9AD800C19912 /* no_internet_connection.json in Resources */ = {isa = PBXBuildFile; fileRef = C66F488B244C9AD700C19912 /* no_internet_connection.json */; };
+		C66F488E244CA5D400C19912 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66F488D244CA5D400C19912 /* Reachability.swift */; };
+		C66F4891244CCB2200C19912 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = C66F4890244CCB2200C19912 /* MBProgressHUD */; };
 		C67B9730244B9B00002E37F2 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67B972F244B9B00002E37F2 /* MainController.swift */; };
 		C694902A23D994F4008E4031 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694902923D994F4008E4031 /* AppDelegate.swift */; };
-		C694902E23D994F4008E4031 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694902D23D994F4008E4031 /* ViewController.swift */; };
 		C694903123D994F4008E4031 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C694902F23D994F4008E4031 /* Main.storyboard */; };
 		C694903323D994F6008E4031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C694903223D994F6008E4031 /* Assets.xcassets */; };
 		C694903623D994F6008E4031 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C694903423D994F6008E4031 /* LaunchScreen.storyboard */; };
@@ -29,10 +34,12 @@
 /* Begin PBXFileReference section */
 		C61743E5244C43220085E2B2 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		C62B700323DAFFBD00BC4E1F /* CurrencyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
+		C66F4889244C9A7F00C19912 /* loading_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_animation.json; sourceTree = "<group>"; };
+		C66F488B244C9AD700C19912 /* no_internet_connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = no_internet_connection.json; sourceTree = "<group>"; };
+		C66F488D244CA5D400C19912 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C67B972F244B9B00002E37F2 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		C694902623D994F4008E4031 /* Sarrafi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sarrafi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C694902923D994F4008E4031 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C694902D23D994F4008E4031 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C694903023D994F4008E4031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C694903223D994F6008E4031 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C694903523D994F6008E4031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +61,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C381DC24445081001F6289 /* Alamofire in Frameworks */,
+				C610DF40244C93A3005B250E /* Charts in Frameworks */,
+				C66F4891244CCB2200C19912 /* MBProgressHUD in Frameworks */,
+				C610DF46244C965A005B250E /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,10 +103,11 @@
 				C62B700223DAFFAA00BC4E1F /* Model */,
 				C694909123DA173F008E4031 /* View */,
 				C694902923D994F4008E4031 /* AppDelegate.swift */,
-				C694902D23D994F4008E4031 /* ViewController.swift */,
 				C694902F23D994F4008E4031 /* Main.storyboard */,
 				C694903223D994F6008E4031 /* Assets.xcassets */,
 				C694903423D994F6008E4031 /* LaunchScreen.storyboard */,
+				C66F4889244C9A7F00C19912 /* loading_animation.json */,
+				C66F488B244C9AD700C19912 /* no_internet_connection.json */,
 				C694903723D994F6008E4031 /* Info.plist */,
 			);
 			path = Sarrafi;
@@ -117,6 +128,7 @@
 				C694908023DA061C008E4031 /* Fonts */,
 				C694908D23DA136D008E4031 /* CardView.swift */,
 				C694908B23DA12B3008E4031 /* Helper.swift */,
+				C66F488D244CA5D400C19912 /* Reachability.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -159,6 +171,9 @@
 			name = Sarrafi;
 			packageProductDependencies = (
 				C6C381DB24445081001F6289 /* Alamofire */,
+				C610DF3F244C93A3005B250E /* Charts */,
+				C610DF45244C965A005B250E /* Lottie */,
+				C66F4890244CCB2200C19912 /* MBProgressHUD */,
 			);
 			productName = Sarrafi;
 			productReference = C694902623D994F4008E4031 /* Sarrafi.app */;
@@ -190,6 +205,9 @@
 			mainGroup = C694901D23D994F4008E4031;
 			packageReferences = (
 				C6C381DA24445081001F6289 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C610DF3E244C93A3005B250E /* XCRemoteSwiftPackageReference "Charts" */,
+				C610DF44244C965A005B250E /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				C66F488F244CCB2200C19912 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 			);
 			productRefGroup = C694902723D994F4008E4031 /* Products */;
 			projectDirPath = "";
@@ -206,10 +224,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C694903623D994F6008E4031 /* LaunchScreen.storyboard in Resources */,
+				C66F488C244C9AD800C19912 /* no_internet_connection.json in Resources */,
 				C694903323D994F6008E4031 /* Assets.xcassets in Resources */,
 				C694908723DA0697008E4031 /* Shabnam-Thin-FD.ttf in Resources */,
 				C694908923DA0697008E4031 /* Shabnam-FD.ttf in Resources */,
 				C694908223DA066E008E4031 /* Shabnam-Bold-FD.ttf in Resources */,
+				C66F488A244C9A7F00C19912 /* loading_animation.json in Resources */,
 				C694908823DA0697008E4031 /* Shabnam-Medium-FD.ttf in Resources */,
 				C694908A23DA0697008E4031 /* Shabnam-Light-FD.ttf in Resources */,
 				C694903123D994F4008E4031 /* Main.storyboard in Resources */,
@@ -227,9 +247,9 @@
 				C61743E6244C43220085E2B2 /* NavigationController.swift in Sources */,
 				C67B9730244B9B00002E37F2 /* MainController.swift in Sources */,
 				C694908E23DA136D008E4031 /* CardView.swift in Sources */,
-				C694902E23D994F4008E4031 /* ViewController.swift in Sources */,
 				C694909323DA1774008E4031 /* CurrencyCell.swift in Sources */,
 				C694908C23DA12B3008E4031 /* Helper.swift in Sources */,
+				C66F488E244CA5D400C19912 /* Reachability.swift in Sources */,
 				C694902A23D994F4008E4031 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,6 +456,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C610DF3E244C93A3005B250E /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.5.0;
+			};
+		};
+		C610DF44244C965A005B250E /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.6;
+			};
+		};
+		C66F488F244CCB2200C19912 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		C6C381DA24445081001F6289 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -447,6 +491,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C610DF3F244C93A3005B250E /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C610DF3E244C93A3005B250E /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
+		C610DF45244C965A005B250E /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C610DF44244C965A005B250E /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		C66F4890244CCB2200C19912 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C66F488F244CCB2200C19912 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
 		C6C381DB24445081001F6289 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C6C381DA24445081001F6289 /* XCRemoteSwiftPackageReference "Alamofire" */;
