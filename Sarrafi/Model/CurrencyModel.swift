@@ -14,6 +14,7 @@ import Foundation
 class CurrencyModel {
     private var _title : String!
     private var _currentPrice : String!
+    private var _toCurrency: String!
     private var _status : String!
     private var _priceUp : String!
     private var _priceDown : String!
@@ -27,6 +28,10 @@ class CurrencyModel {
     
     var currentPrice: String {
         return _currentPrice
+    }
+    
+    var toCurrency: String {
+        return _toCurrency
     }
     
     var status: String {
@@ -53,9 +58,10 @@ class CurrencyModel {
         return _updateTime
     }
 
-    init(title: String, currentPrice: String, status: String, priceUp: String, priceDown: String, percentChange: String, priceChange: String, updateTime: String) {
+    init(title: String, currentPrice: String, toCurrency: String, status: String, priceUp: String, priceDown: String, percentChange: String, priceChange: String, updateTime: String) {
         _title = title
         _currentPrice = currentPrice
+        _toCurrency = toCurrency
         _status = status
         _priceUp = priceUp
         _priceDown = priceDown
@@ -105,38 +111,38 @@ struct Current: Codable {
     let ripple: CurrencyDetail
     let dash: CurrencyDetail
     let litecoin: CurrencyDetail
-    let stella: CurrencyDetail
+    let stellar: CurrencyDetail
 
 
     enum CodingKeys: String, CodingKey {
         
         // MARK: - Currency
-        case price_dollar_rl            //Dollar Amrica
-        case price_dollar_soleymani     //Dollar Soleymanie
+        case price_dollar_rl            //American Dollar
+        case price_dollar_soleymani     //Soleymanie Dollar
         case price_eur                  //Euro
-        case price_cad                  //Dollar Canada
-        case price_gbp
-        case price_aed
-        case price_try
-        case price_cny
-        case price_jpy
-        case price_afn
-        case price_iqd
-        case price_myr
-        case price_rub
-        case price_inr
+        case price_cad                  //Canada Dollar
+        case price_gbp                  //England Pound
+        case price_aed                  //United Arab Emirates dirham
+        case price_try                  //Turkish lira
+        case price_cny                  //Chinese Yuan
+        case price_jpy                  //Japanese Yen
+        case price_afn                  //Afghan Afghani
+        case price_iqd                  //Iraqi Dinar
+        case price_myr                  //Malaysian Ringgit
+        case price_rub                  //Russian Ruble
+        case price_inr                  //Indian Rupee
         
         // MARK: - Gold and Coins
         case sekee      //Seke Emami
         case sekeb      //Seke bahare azadi
-        case nim
-        case rob
-        case geram24
-        case geram18
-        case mesghal
+        case nim        //Seke nim
+        case rob        //Seke rob
+        case geram24    //Tala geram 24
+        case geram18    //Tala geram 18
+        case mesghal    //Tala mesghal
         case gerami     //Seke Gerami
-        case ons
-        case silver
+        case ons        //Ons Tala
+        case silver     //Noghre
         case gold_mini_size
         
         // MARK: - Digital Currency
@@ -145,7 +151,7 @@ struct Current: Codable {
         case ripple = "crypto-ripple"
         case dash = "crypto-dash"
         case litecoin = "crypto-litecoin"
-        case stella = "crypto-stella"
+        case stellar = "crypto-stellar"
         
     }
 }
@@ -179,4 +185,9 @@ struct CurrencyDetail: Codable {
         case settlement
         case r
     }
+}
+
+struct currency {
+    static let rial = "ریال"
+    static let dollar = "دلار"
 }
