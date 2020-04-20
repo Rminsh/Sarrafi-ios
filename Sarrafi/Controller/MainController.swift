@@ -111,39 +111,39 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
                 case .success:
                     do {
                         let decoder = try JSONDecoder().decode(CurrencyStruct.self, from: response.data!)
-                        self.addObj(currencyObject: decoder.current.price_dollar_rl, title: "دلار آمریکا", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_dollar_soleymani, title: "دلار سلیمانیه", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_eur, title: "یورو", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_cad, title: "دلار کانادا", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_gbp, title: "پوند انگلیس", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_aed, title: "درهم امارات", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_try, title: "لیر ترکیه", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_cny, title: "یوان چین", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_jpy, title: "ین ژاپن", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_afn, title: "افغانی", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_iqd, title: "دینار عراق", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_myr, title: "رینگیت مالزی", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_rub, title: "روبل روسیه", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.price_inr, title: "روپیه هند", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_dollar_rl, currencyName: Current.CodingKeys.price_dollar_rl.rawValue, title: "دلار آمریکا", toCurrency:currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_dollar_soleymani, currencyName: Current.CodingKeys.price_dollar_soleymani.rawValue, title: "دلار سلیمانیه", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_eur, currencyName: Current.CodingKeys.price_eur.rawValue, title: "یورو", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_cad, currencyName: Current.CodingKeys.price_cad.rawValue, title: "دلار کانادا", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_gbp, currencyName: Current.CodingKeys.price_gbp.rawValue, title: "پوند انگلیس", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_aed, currencyName: Current.CodingKeys.price_aed.rawValue, title: "درهم امارات", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_try, currencyName: Current.CodingKeys.price_try.rawValue, title: "لیر ترکیه", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_cny, currencyName: Current.CodingKeys.price_cny.rawValue, title: "یوان چین", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_jpy, currencyName: Current.CodingKeys.price_jpy.rawValue, title: "ین ژاپن", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_afn, currencyName: Current.CodingKeys.price_afn.rawValue, title: "افغانی", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_iqd, currencyName: Current.CodingKeys.price_iqd.rawValue, title: "دینار عراق", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_myr, currencyName: Current.CodingKeys.price_myr.rawValue, title: "رینگیت مالزی", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_rub, currencyName: Current.CodingKeys.price_rub.rawValue, title: "روبل روسیه", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.price_inr, currencyName: Current.CodingKeys.price_inr.rawValue, title: "روپیه هند", toCurrency: currency.rial)
                         
-                        self.addObj(currencyObject: decoder.current.sekee, title: "سکه امامی", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.sekeb, title: "سکه بهار آزادی", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.nim, title: "نیم سکه", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.rob, title: "ربع سکه", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.geram24, title: "طلای ۲۴ عیار", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.geram18, title: "طلای ۱۸ عیار", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.mesghal, title: "مثقال طلا", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.gerami, title: "سکه گرمی", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.ons, title: "انس طلا", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.silver, title: "انس نقره", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.gold_mini_size, title: "طلای دست دوم", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.sekee, currencyName: Current.CodingKeys.sekee.rawValue, title: "سکه امامی", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.sekeb, currencyName: Current.CodingKeys.sekeb.rawValue, title: "سکه بهار آزادی", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.nim, currencyName: Current.CodingKeys.nim.rawValue, title: "نیم سکه", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.rob, currencyName: Current.CodingKeys.rob.rawValue, title: "ربع سکه", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.geram24, currencyName: Current.CodingKeys.geram24.rawValue, title: "طلای ۲۴ عیار", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.geram18, currencyName: Current.CodingKeys.geram18.rawValue, title: "طلای ۱۸ عیار", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.mesghal, currencyName: Current.CodingKeys.mesghal.rawValue, title: "مثقال طلا", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.gerami, currencyName: Current.CodingKeys.gerami.rawValue, title: "سکه گرمی", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.ons, currencyName: Current.CodingKeys.ons.rawValue, title: "انس طلا", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.silver, currencyName: Current.CodingKeys.silver.rawValue, title: "انس نقره", toCurrency: currency.rial)
+                        self.addObj(currencyObject: decoder.current.gold_mini_size, currencyName: Current.CodingKeys.gold_mini_size.rawValue, title: "طلای دست دوم", toCurrency: currency.rial)
                         
-                        self.addObj(currencyObject: decoder.current.bitcoin, title: "بیت کوین / Bitcoin", toCurrency: currency.dollar)
-                        self.addObj(currencyObject: decoder.current.ethereum, title: "اتریوم / Ethereum", toCurrency: currency.dollar)
-                        self.addObj(currencyObject: decoder.current.ripple, title: "ریپل / Ripple", toCurrency: currency.dollar)
-                        self.addObj(currencyObject: decoder.current.dash, title: "دش / Dash", toCurrency: currency.dollar)
-                        self.addObj(currencyObject: decoder.current.litecoin, title: "لایت کوین/Litecoin", toCurrency: currency.dollar)
-                        self.addObj(currencyObject: decoder.current.stellar, title: "استلار / Stellar", toCurrency: currency.dollar)
+                        self.addObj(currencyObject: decoder.current.bitcoin, currencyName: Current.CodingKeys.bitcoin.rawValue, title: "بیت کوین / Bitcoin", toCurrency: currency.dollar)
+                        self.addObj(currencyObject: decoder.current.ethereum, currencyName: Current.CodingKeys.ethereum.rawValue, title: "اتریوم / Ethereum", toCurrency: currency.dollar)
+                        self.addObj(currencyObject: decoder.current.ripple, currencyName: Current.CodingKeys.ripple.rawValue, title: "ریپل / Ripple", toCurrency: currency.dollar)
+                        self.addObj(currencyObject: decoder.current.dash, currencyName: Current.CodingKeys.dash.rawValue, title: "دش / Dash", toCurrency: currency.dollar)
+                        self.addObj(currencyObject: decoder.current.litecoin, currencyName: Current.CodingKeys.litecoin.rawValue, title: "لایت کوین/Litecoin", toCurrency: currency.dollar)
+                        self.addObj(currencyObject: decoder.current.stellar, currencyName: Current.CodingKeys.stellar.rawValue, title: "استلار / Stellar", toCurrency: currency.dollar)
                         self.currencyCollection.reloadData()
                         
                     } catch {
@@ -166,8 +166,9 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     // MARK: - Adding Objects
-    func addObj(currencyObject: CurrencyDetail, title: String, toCurrency: String) {
+    func addObj(currencyObject: CurrencyDetail, currencyName: String, title: String, toCurrency: String) {
         currencyStats.append(CurrencyModel(
+            object: currencyName,
             title: title,
             currentPrice: currencyObject.p,
             toCurrency: toCurrency,

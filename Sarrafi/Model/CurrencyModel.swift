@@ -12,6 +12,7 @@ import Foundation
 // MARK: - Currency Model Class
 
 class CurrencyModel {
+    private var _object : String!
     private var _title : String!
     private var _currentPrice : String!
     private var _toCurrency: String!
@@ -21,6 +22,10 @@ class CurrencyModel {
     private var _percentChange : String!
     private var _priceChange : String!
     private var _updateTime : String!
+    
+    var object: String {
+        return _object
+    }
     
     var title: String {
         return _title
@@ -58,7 +63,8 @@ class CurrencyModel {
         return _updateTime
     }
 
-    init(title: String, currentPrice: String, toCurrency: String, status: String, priceUp: String, priceDown: String, percentChange: String, priceChange: String, updateTime: String) {
+    init(object: String, title: String, currentPrice: String, toCurrency: String, status: String, priceUp: String, priceDown: String, percentChange: String, priceChange: String, updateTime: String) {
+        _object = object
         _title = title
         _currentPrice = currentPrice
         _toCurrency = toCurrency

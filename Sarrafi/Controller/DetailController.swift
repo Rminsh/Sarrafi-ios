@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import UICircularProgressRing
 
 class DetailController: UIViewController {
@@ -25,9 +26,12 @@ class DetailController: UIViewController {
         super.viewDidLoad()
         
         setupInterface()
+        sendGetTableRequest()
     }
     
     func setupInterface() {
+        print("✅OBJECT \(currency.object)")
+        self.title = currency.title
         chartSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 12)!], for: UIControl.State.normal)
         
         priceLabel.text = "\(currency.currentPrice) \(currency.toCurrency)"
@@ -67,5 +71,36 @@ class DetailController: UIViewController {
             priceChangeLabel.text = "بدون تغییر"
         }
     }
+    
+    func sendGetTableRequest() {
+        /**
+         Get table
+         get https://www.tgju.org/
+         */
+
+        // Add URL parameters
+        let urlParams = [
+            "act":"chart-api",
+            "noview":"null",
+            "client":"app",
+            "appversion":"3",
+            "name": currency.object,
+        ]
+
+        // Fetch Request
+        AF.request("https://www.tgju.org/", method: .get, parameters: urlParams, headers: nil)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                switch response.result {
+                case .success:
+                    print(response.data)
+                    break
+                case .failure:
+                    print("Error")
+                    break
+                }
+        }
+    }
+
     
 }
