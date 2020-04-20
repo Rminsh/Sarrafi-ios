@@ -16,6 +16,7 @@
 		C66F488E244CA5D400C19912 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66F488D244CA5D400C19912 /* Reachability.swift */; };
 		C66F4891244CCB2200C19912 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = C66F4890244CCB2200C19912 /* MBProgressHUD */; };
 		C67B9730244B9B00002E37F2 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67B972F244B9B00002E37F2 /* MainController.swift */; };
+		C67C0F62244CE2E700CD01C7 /* UICircularProgressRing in Frameworks */ = {isa = PBXBuildFile; productRef = C67C0F61244CE2E700CD01C7 /* UICircularProgressRing */; };
 		C694902A23D994F4008E4031 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694902923D994F4008E4031 /* AppDelegate.swift */; };
 		C694903123D994F4008E4031 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C694902F23D994F4008E4031 /* Main.storyboard */; };
 		C694903323D994F6008E4031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C694903223D994F6008E4031 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		C694908C23DA12B3008E4031 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694908B23DA12B3008E4031 /* Helper.swift */; };
 		C694908E23DA136D008E4031 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694908D23DA136D008E4031 /* CardView.swift */; };
 		C694909323DA1774008E4031 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694909223DA1774008E4031 /* CurrencyCell.swift */; };
+		C6B7AB17244D7E650097E3EA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B7AB16244D7E650097E3EA /* DetailController.swift */; };
 		C6C381DC24445081001F6289 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C6C381DB24445081001F6289 /* Alamofire */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +54,7 @@
 		C694908B23DA12B3008E4031 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		C694908D23DA136D008E4031 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		C694909223DA1774008E4031 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		C6B7AB16244D7E650097E3EA /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		C6C381DD244450A7001F6289 /* Sarrafi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sarrafi.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +66,7 @@
 				C6C381DC24445081001F6289 /* Alamofire in Frameworks */,
 				C610DF40244C93A3005B250E /* Charts in Frameworks */,
 				C66F4891244CCB2200C19912 /* MBProgressHUD in Frameworks */,
+				C67C0F62244CE2E700CD01C7 /* UICircularProgressRing in Frameworks */,
 				C610DF46244C965A005B250E /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +122,7 @@
 			children = (
 				C61743E5244C43220085E2B2 /* NavigationController.swift */,
 				C67B972F244B9B00002E37F2 /* MainController.swift */,
+				C6B7AB16244D7E650097E3EA /* DetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -174,6 +179,7 @@
 				C610DF3F244C93A3005B250E /* Charts */,
 				C610DF45244C965A005B250E /* Lottie */,
 				C66F4890244CCB2200C19912 /* MBProgressHUD */,
+				C67C0F61244CE2E700CD01C7 /* UICircularProgressRing */,
 			);
 			productName = Sarrafi;
 			productReference = C694902623D994F4008E4031 /* Sarrafi.app */;
@@ -208,6 +214,7 @@
 				C610DF3E244C93A3005B250E /* XCRemoteSwiftPackageReference "Charts" */,
 				C610DF44244C965A005B250E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				C66F488F244CCB2200C19912 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+				C67C0F60244CE2E700CD01C7 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */,
 			);
 			productRefGroup = C694902723D994F4008E4031 /* Products */;
 			projectDirPath = "";
@@ -250,6 +257,7 @@
 				C694909323DA1774008E4031 /* CurrencyCell.swift in Sources */,
 				C694908C23DA12B3008E4031 /* Helper.swift in Sources */,
 				C66F488E244CA5D400C19912 /* Reachability.swift in Sources */,
+				C6B7AB17244D7E650097E3EA /* DetailController.swift in Sources */,
 				C694902A23D994F4008E4031 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,6 +488,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		C67C0F60244CE2E700CD01C7 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/luispadron/UICircularProgressRing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.0;
+			};
+		};
 		C6C381DA24445081001F6289 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -505,6 +521,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C66F488F244CCB2200C19912 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
 			productName = MBProgressHUD;
+		};
+		C67C0F61244CE2E700CD01C7 /* UICircularProgressRing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C67C0F60244CE2E700CD01C7 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */;
+			productName = UICircularProgressRing;
 		};
 		C6C381DB24445081001F6289 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -50,9 +50,13 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     // MARK: - Collection view on click
-    //func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //  widgetPressed(item: items [indexPath.row], parentVC: self)
-    //}
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "detail_vc") as! DetailController
+        vc.modalPresentationStyle = .fullScreen
+        vc.currency = currencyStats [indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

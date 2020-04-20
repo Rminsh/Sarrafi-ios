@@ -18,12 +18,12 @@ class CardView: UIView {
     @IBInspectable var shadowColor: UIColor? = UIColor.black
     @IBInspectable var shadowOpacity: Float = 0.5
     
-    @IBInspectable var startColor:   UIColor = .black { didSet { updateColors() }}
-    @IBInspectable var endColor:     UIColor = .white { didSet { updateColors() }}
-    @IBInspectable var startLocation: Double =   0.05 { didSet { updateLocations() }}
-    @IBInspectable var endLocation:   Double =   0.95 { didSet { updateLocations() }}
-    @IBInspectable var horizontalMode:  Bool =  false { didSet { updatePoints() }}
-    @IBInspectable var diagonalMode:    Bool =  false { didSet { updatePoints() }}
+    @IBInspectable var startColor:   UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)    { didSet { updateColors() }}
+    @IBInspectable var endColor:     UIColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)    { didSet { updateColors() }}
+    @IBInspectable var startLocation: Double = 0.05  { didSet { updateLocations() }}
+    @IBInspectable var endLocation:   Double = 0.95  { didSet { updateLocations() }}
+    @IBInspectable var horizontalMode:  Bool = false { didSet { updatePoints() }}
+    @IBInspectable var diagonalMode:    Bool = false { didSet { updatePoints() }}
     
     override public class var layerClass: AnyClass { CAGradientLayer.self }
 
