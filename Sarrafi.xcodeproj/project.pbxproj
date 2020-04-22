@@ -15,6 +15,7 @@
 		C66F488C244C9AD800C19912 /* no_internet_connection.json in Resources */ = {isa = PBXBuildFile; fileRef = C66F488B244C9AD700C19912 /* no_internet_connection.json */; };
 		C66F488E244CA5D400C19912 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66F488D244CA5D400C19912 /* Reachability.swift */; };
 		C66F4891244CCB2200C19912 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = C66F4890244CCB2200C19912 /* MBProgressHUD */; };
+		C6757075244F8BEA00999245 /* ChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6757074244F8BE900999245 /* ChartModel.swift */; };
 		C67B9730244B9B00002E37F2 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67B972F244B9B00002E37F2 /* MainController.swift */; };
 		C67C0F62244CE2E700CD01C7 /* UICircularProgressRing in Frameworks */ = {isa = PBXBuildFile; productRef = C67C0F61244CE2E700CD01C7 /* UICircularProgressRing */; };
 		C694902A23D994F4008E4031 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694902923D994F4008E4031 /* AppDelegate.swift */; };
@@ -39,6 +40,7 @@
 		C66F4889244C9A7F00C19912 /* loading_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_animation.json; sourceTree = "<group>"; };
 		C66F488B244C9AD700C19912 /* no_internet_connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = no_internet_connection.json; sourceTree = "<group>"; };
 		C66F488D244CA5D400C19912 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		C6757074244F8BE900999245 /* ChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModel.swift; sourceTree = "<group>"; };
 		C67B972F244B9B00002E37F2 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		C694902623D994F4008E4031 /* Sarrafi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sarrafi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C694902923D994F4008E4031 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				C62B700323DAFFBD00BC4E1F /* CurrencyModel.swift */,
+				C6757074244F8BE900999245 /* ChartModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				C61743E6244C43220085E2B2 /* NavigationController.swift in Sources */,
 				C67B9730244B9B00002E37F2 /* MainController.swift in Sources */,
 				C694908E23DA136D008E4031 /* CardView.swift in Sources */,
+				C6757075244F8BEA00999245 /* ChartModel.swift in Sources */,
 				C694909323DA1774008E4031 /* CurrencyCell.swift in Sources */,
 				C694908C23DA12B3008E4031 /* Helper.swift in Sources */,
 				C66F488E244CA5D400C19912 /* Reachability.swift in Sources */,
