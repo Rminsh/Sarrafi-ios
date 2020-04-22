@@ -92,6 +92,7 @@ class DetailController: UIViewController {
             priceChangeLabel.text = "بدون تغییر"
         }
         
+        chart.extraRightOffset = 12
         chart.chartDescription?.enabled = false
         chart.legend.enabled = false
         chart.rightAxis.enabled = false
@@ -128,8 +129,8 @@ class DetailController: UIViewController {
                         
                         // Get Today chart
                         for item in decoder.today_table.reversed() {
-                            self.dateDaily.append(String(item.time.prefix(5)))
-                            self.pricesDaily.append((item.price as NSString).doubleValue)
+                            self.dateDaily.append(item.time)
+                            self.pricesDaily.append((item.price! as NSString).doubleValue)
                         }
                         
                         // Get Monthly Chart
@@ -138,7 +139,7 @@ class DetailController: UIViewController {
                         let decoder_chart_1 = try JSONDecoder().decode([NormalTable].self, from: chart_1_data!)
                         for item in decoder_chart_1 {
                             self.dateMonthly.append(String(item.jdate.suffix(5)))
-                            self.pricesMonthly.append(Double(item.value))
+                            self.pricesMonthly.append(item.value)
                         }
                         
                         // Get 3 Months Chart
@@ -147,7 +148,7 @@ class DetailController: UIViewController {
                         let decoder_chart_3 = try JSONDecoder().decode([NormalTable].self, from: chart_3_data!)
                         for item in decoder_chart_3 {
                             self.dateThreeMonths.append(String(item.jdate.suffix(5)))
-                            self.pricesThreeMonths.append(Double(item.value))
+                            self.pricesThreeMonths.append(item.value)
                         }
                         
                         // Get 6 Months Chart
@@ -156,7 +157,7 @@ class DetailController: UIViewController {
                         let decoder_chart_6 = try JSONDecoder().decode([NormalTable].self, from: chart_6_data!)
                         for item in decoder_chart_6 {
                             self.dateSixMonths.append(String(item.jdate.suffix(5)))
-                            self.pricesSixMonths.append(Double(item.value))
+                            self.pricesSixMonths.append(item.value)
                         }
                         
                         //Get Chart Summery
@@ -165,7 +166,7 @@ class DetailController: UIViewController {
                         let decoder_chart_summary = try JSONDecoder().decode([NormalTable].self, from: chart_summary_data!)
                         for item in decoder_chart_summary {
                             self.dateAllMonths.append(String(item.jdate.prefix(7)))
-                            self.pricesAllMonths.append(Double(item.value))
+                            self.pricesAllMonths.append(item.value)
                         }
                         
                         self.loadFilters()

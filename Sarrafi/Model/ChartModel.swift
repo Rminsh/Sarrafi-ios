@@ -22,13 +22,59 @@ struct ChartStruct : Codable {
 
 // MARK: - TodayTable
 struct TodayTable: Codable {
-    let type: String
-    let price: String
-    let time: String
+    let type: String!
+    var _price: RelaxedString?
+    let time: String!
+    
+    var price: String! {
+        get { _price!.value }
+        set { _price = newValue.map(RelaxedString.init) }
+    }
+    
+    private enum CodingKeys: String, CodingKey {
+        case type = "type"
+        case _price = "price"
+        case time = "time"
+    }
+
+    init(type: String? = nil, price: String? = nil, time: String? = nil) {
+        self.type = type
+        self._price = price.map(RelaxedString.init)
+        self.time = time
+    }
+}
+
+struct RelaxedString: Codable {
+    let value: String
+
+    init(_ value: String) {
+        self.value = value
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        // attempt to decode from all JSON primitives
+        if let str = try? container.decode(String.self) {
+            value = str
+        } else if let int = try? container.decode(Int.self) {
+            value = String(int)
+        } else if let double = try? container.decode(Double.self) {
+            value = String(double)
+        } else if let bool = try? container.decode(Bool.self) {
+            value = String(bool)
+        } else {
+            throw DecodingError.typeMismatch(String.self, .init(codingPath: decoder.codingPath, debugDescription: ""))
+        }
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        try container.encode(value)
+    }
 }
 
 // MARK: - NormalTable
 struct NormalTable: Codable {
-    let date, jdate: String
-    let value: Int
+    let jdate: String
+    let value: Double
 }
