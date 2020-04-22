@@ -15,10 +15,12 @@ class NavigationController: UINavigationController {
         
         if #available(iOS 13.0, *) {
             let navigationTitleFont = UIFont(name: "Shabnam-FD", size: 18)!
+            let navigationLargeTitleFont = UIFont(name: "Shabnam-FD", size: 32)!
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = UIColor(named: "BackgroundColor")
             appearance.titleTextAttributes = [NSAttributedString.Key.font: navigationTitleFont]
+            appearance.largeTitleTextAttributes = [NSAttributedString.Key.font: navigationLargeTitleFont]
             
             // NAV BUTTON STYLING
             let button = UIBarButtonItemAppearance(style: .plain)
@@ -34,6 +36,7 @@ class NavigationController: UINavigationController {
             
         } else {
             self.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 18)!]
+            self.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 32)!]
             
             //Remove NavigationBar Border
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)

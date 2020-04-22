@@ -26,7 +26,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainController" customModule="Sarrafi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LIr-cl-yO2">
@@ -53,36 +53,36 @@
                                                             <rect key="frame" x="8" y="8" width="125" height="98"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ارز" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rof-Xl-czp">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="23.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="22"/>
                                                                     <fontDescription key="fontDescription" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="15"/>
                                                                     <color key="textColor" white="1" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰ ریال" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxi-i3-B3E">
-                                                                    <rect key="frame" x="0.0" y="35.5" width="125" height="27.5"/>
+                                                                    <rect key="frame" x="0.0" y="34" width="125" height="26.5"/>
                                                                     <fontDescription key="fontDescription" name="Shabnam-Medium-FD" family="Shabnam FD" pointSize="18"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xHP-ll-s5s">
-                                                                    <rect key="frame" x="0.0" y="75" width="125" height="23"/>
+                                                                    <rect key="frame" x="0.0" y="72.5" width="125" height="25.5"/>
                                                                     <subviews>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bFU-9z-q9F">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="35.5" height="23"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="36" height="25.5"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰٪" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTM-Za-Rap">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="12.5" height="23"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="13" height="25.5"/>
                                                                                     <fontDescription key="fontDescription" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="13"/>
                                                                                     <color key="textColor" white="1" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_arrow_up" translatesAutoresizingMaskIntoConstraints="NO" id="NT9-8V-1vc">
-                                                                                    <rect key="frame" x="17.5" y="0.0" width="18" height="23"/>
+                                                                                    <rect key="frame" x="18" y="0.0" width="18" height="25.5"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                         </stackView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="۰۰:۰۰:۰۰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="tTX-RK-OV5">
-                                                                            <rect key="frame" x="83" y="0.0" width="42" height="23"/>
+                                                                            <rect key="frame" x="81.5" y="0.0" width="43.5" height="25.5"/>
                                                                             <fontDescription key="fontDescription" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="13"/>
                                                                             <color key="textColor" white="1" alpha="0.65000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <nil key="highlightedColor"/>
@@ -136,7 +136,7 @@
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="6Dx-pz-dSe">
-                                <rect key="frame" x="16" y="132.5" width="288" height="259.5"/>
+                                <rect key="frame" x="16" y="136" width="288" height="252"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldo-as-xYf" customClass="AnimationView" customModule="Lottie">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="200"/>
@@ -145,13 +145,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="متن" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="08W-WX-jsu">
-                                        <rect key="frame" x="0.0" y="200" width="288" height="23.5"/>
+                                        <rect key="frame" x="0.0" y="200" width="288" height="20"/>
                                         <fontDescription key="fontDescription" name="Shabnam-FD" family="Shabnam FD" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulH-uC-ZLf">
-                                        <rect key="frame" x="0.0" y="223.5" width="288" height="36"/>
+                                        <rect key="frame" x="0.0" y="220" width="288" height="32"/>
                                         <fontDescription key="fontDescription" name="Shabnam-FD" family="Shabnam FD" pointSize="17"/>
                                         <state key="normal" title="تلاش دوباره"/>
                                         <connections>
@@ -163,7 +163,7 @@
                         </subviews>
                         <color key="backgroundColor" name="BackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="LIr-cl-yO2" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="7sM-LI-vZo"/>
+                            <constraint firstItem="LIr-cl-yO2" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="7sM-LI-vZo"/>
                             <constraint firstItem="6Dx-pz-dSe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8FU-Ee-HKG"/>
                             <constraint firstItem="LIr-cl-yO2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="O3x-mV-89D"/>
                             <constraint firstItem="6Dx-pz-dSe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mEv-WL-lxl"/>
@@ -172,7 +172,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="صرافی" id="NSQ-jO-aGA">
+                    <navigationItem key="navigationItem" title="صرافی" largeTitleDisplayMode="always" id="NSQ-jO-aGA">
                         <barButtonItem key="backBarButtonItem" title="بازگشت" id="Gdg-hT-FGx"/>
                     </navigationItem>
                     <connections>
@@ -424,12 +424,15 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="esz-L7-s3t" customClass="NavigationController" customModule="Sarrafi" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ehT-vn-Svc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" largeTitles="YES" id="ehT-vn-Svc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" name="BackgroundColor"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Shabnam-FD" family="Shabnam FD" pointSize="18"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Shabnam-FD" family="Shabnam FD" pointSize="25"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
