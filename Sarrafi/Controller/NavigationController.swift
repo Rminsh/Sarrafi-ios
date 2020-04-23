@@ -1,9 +1,9 @@
 //
 //  NavigationController.swift
-//  Karpardaz
+//  Sarrafi
 //
 //  Created by armin on 3/26/20.
-//  Copyright © 2020 Kaarpardaz. All rights reserved.
+//  Copyright © 2020 shalchian. All rights reserved.
 //
 
 import UIKit
@@ -12,6 +12,10 @@ class NavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 15)!], for: UIControl.State.normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 15)!], for: UIControl.State.highlighted)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 10)!], for: UIControl.State.normal)
         
         if #available(iOS 13.0, *) {
             let navigationTitleFont = UIFont(name: "Shabnam-FD", size: 18)!

@@ -92,7 +92,7 @@ class DetailController: UIViewController {
             priceChangeLabel.text = "بدون تغییر"
         }
         
-        chart.extraRightOffset = 12
+        chart.extraRightOffset = 40
         chart.chartDescription?.enabled = false
         chart.legend.enabled = false
         chart.rightAxis.enabled = false
@@ -213,6 +213,16 @@ class DetailController: UIViewController {
     func setDateChart(date: [String]) {
         let xAxis = chart.xAxis
         xAxis.valueFormatter = IndexAxisValueFormatter(values: date)
+        let marker:BalloonMarker = BalloonMarker(
+            date: date,
+            priceType: currency.toCurrency,
+            color: UIColor(named: "Accent")!,
+            font: UIFont(name: "Shabnam-FD", size: 12)!,
+            textColor: UIColor.white,
+            insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 25.0, right: 7.0
+        ))
+         marker.minimumSize = CGSize(width: 75.0, height: 35.0)//CGSize(75.0, 35.0)
+        chart.marker = marker
     }
     
     func setDataChart(price: [Double]) {

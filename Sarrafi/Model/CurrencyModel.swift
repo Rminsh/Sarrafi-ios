@@ -162,7 +162,7 @@ struct Current: Codable {
     }
 }
 
-// MARK: - PuneHedgehog
+// MARK: - CurrencyDetail
 struct CurrencyDetail: Codable {
     let p: String
     let h: String
