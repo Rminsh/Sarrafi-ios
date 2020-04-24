@@ -260,6 +260,7 @@ class DetailController: UIViewController {
     func showChart() {
         self.chartActivityIndicator.isHidden = true
         self.chart.isHidden = false
+        chartSegmentedControl.isEnabled = true
     }
 
 }
