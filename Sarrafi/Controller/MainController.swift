@@ -11,7 +11,7 @@ import Alamofire
 import Lottie
 import MBProgressHUD
 
-class MainController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+class MainController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating {
 
     @IBOutlet weak var currencyCollection: UICollectionView!
     
@@ -22,17 +22,19 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
     
     var refresher: UIRefreshControl!
     var currencyStats = [CurrencyModel]()
-    private let spacing:CGFloat = 5
+    var filteredStats: [CurrencyModel] = []
+    var searching = false
+    let searchController = UISearchController(searchResultsController: nil)
     
     // MARK: - Collection view count
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return currencyStats.count
+        return searching ? filteredStats.count : currencyStats.count
     }
     
     // MARK: - Collection view cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "currency_cell", for: indexPath) as? CurrencyCell {
-            let _items = currencyStats [indexPath.row]
+            let _items = searching ? filteredStats[indexPath.row] : currencyStats[indexPath.row]
             cell.updateUI(items: _items)
             
             return cell
@@ -54,13 +56,18 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "detail_vc") as! DetailController
         vc.modalPresentationStyle = .fullScreen
-        vc.currency = currencyStats [indexPath.row]
+        vc.currency = searching ? filteredStats[indexPath.row] : currencyStats[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.semanticContentAttribute = .forceRightToLeft
+        navigationItem.searchController = searchController
+         
         emptyStateLottie.loopMode = .loop
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "به روزرسانی اطلاعات" , attributes: [NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 12)!])
@@ -225,5 +232,11 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
             self.failedHUD(error: "به اینترنت متصل نیستید")
             refresher.endRefreshing()
         }
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredStats = currencyStats.filter({$0.title.prefix(searchController.searchBar.text!.count) == searchController.searchBar.text!})
+        searching = true
+        currencyCollection.reloadData()
     }
 }

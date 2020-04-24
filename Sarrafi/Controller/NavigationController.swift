@@ -16,6 +16,9 @@ class NavigationController: UINavigationController {
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 15)!], for: UIControl.State.normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 15)!], for: UIControl.State.highlighted)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 10)!], for: UIControl.State.normal)
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 15)!]
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(string: "جست و جو", attributes: [NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 15)!])
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "لغو"
         
         if #available(iOS 13.0, *) {
             let navigationTitleFont = UIFont(name: "Shabnam-FD", size: 18)!
