@@ -53,7 +53,7 @@ class DetailController: UIViewController {
     
     func setupInterface() {
         self.title = currency.title
-        chartSegmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 12)!], for: UIControl.State.normal)
+        chartSegmentedControl.setTitleTextAttributes([.font: UIFont(name: "Shabnam-FD", size: 12)!], for: UIControl.State.normal)
         
         priceLabel.text = "\(currency.currentPrice) \(currency.toCurrency)"
         updateLabel.text = "آخرین به‌روزرسانی \(currency.updateTime)"

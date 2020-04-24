@@ -70,7 +70,7 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
          
         emptyStateLottie.loopMode = .loop
         refresher = UIRefreshControl()
-        refresher.attributedTitle = NSAttributedString(string: "به روزرسانی اطلاعات" , attributes: [NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 12)!])
+        refresher.attributedTitle = NSAttributedString(string: "به روزرسانی اطلاعات" , attributes: [.font: UIFont(name: "Shabnam-FD", size: 12)!])
         refresher.addTarget(self, action: #selector(self.refresh), for: UIControl.Event.valueChanged)
         currencyCollection.backgroundView = refresher
         showLoading()
@@ -208,7 +208,7 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
         let hudInternet = MBProgressHUD.showAdded(to: self.view, animated: true)
         hudInternet.mode = MBProgressHUDMode.customView
         hudInternet.customView = UIImageView(image: #imageLiteral(resourceName: "ic_error"))
-        hudInternet.label.attributedText = NSAttributedString(string: error , attributes: [NSAttributedString.Key.font: UIFont(name: "Shabnam-FD", size: 14)!])
+        hudInternet.label.attributedText = NSAttributedString(string: error , attributes: [.font: UIFont(name: "Shabnam-FD", size: 14)!])
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             hudInternet.hide(animated: true)
