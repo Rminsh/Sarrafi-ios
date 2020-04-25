@@ -21,6 +21,7 @@ class NavigationController: UINavigationController {
         titleParagraphStyle.alignment = .center
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(
             string: "جست و جو", attributes: [.font: UIFont(name: "Shabnam-FD", size: 15)!, .paragraphStyle: titleParagraphStyle])
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [.font: UIFont(name: "Shabnam-FD", size: 15)!]
         UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "لغو"
         
         if #available(iOS 13.0, *) {
