@@ -10,6 +10,8 @@
 		C610DF40244C93A3005B250E /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = C610DF3F244C93A3005B250E /* Charts */; };
 		C610DF46244C965A005B250E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = C610DF45244C965A005B250E /* Lottie */; };
 		C61743E6244C43220085E2B2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61743E5244C43220085E2B2 /* NavigationController.swift */; };
+		C6279EAA2454156E00610AF6 /* WhatsNewKit in Frameworks */ = {isa = PBXBuildFile; productRef = C6279EA92454156E00610AF6 /* WhatsNewKit */; };
+		C6279EAE2454179E00610AF6 /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6279EAD2454179E00610AF6 /* WhatsNew.swift */; };
 		C62B700423DAFFBD00BC4E1F /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B700323DAFFBD00BC4E1F /* CurrencyModel.swift */; };
 		C66F488A244C9A7F00C19912 /* loading_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = C66F4889244C9A7F00C19912 /* loading_animation.json */; };
 		C66F488C244C9AD800C19912 /* no_internet_connection.json in Resources */ = {isa = PBXBuildFile; fileRef = C66F488B244C9AD700C19912 /* no_internet_connection.json */; };
@@ -37,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		C61743E5244C43220085E2B2 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		C6279EAD2454179E00610AF6 /* WhatsNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsNew.swift; sourceTree = "<group>"; };
 		C62B700323DAFFBD00BC4E1F /* CurrencyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyModel.swift; sourceTree = "<group>"; };
 		C66F4889244C9A7F00C19912 /* loading_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_animation.json; sourceTree = "<group>"; };
 		C66F488B244C9AD700C19912 /* no_internet_connection.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = no_internet_connection.json; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 			files = (
 				C6C381DC24445081001F6289 /* Alamofire in Frameworks */,
 				C610DF40244C93A3005B250E /* Charts in Frameworks */,
+				C6279EAA2454156E00610AF6 /* WhatsNewKit in Frameworks */,
 				C66F4891244CCB2200C19912 /* MBProgressHUD in Frameworks */,
 				C67C0F62244CE2E700CD01C7 /* UICircularProgressRing in Frameworks */,
 				C610DF46244C965A005B250E /* Lottie in Frameworks */,
@@ -140,6 +144,7 @@
 				C694908B23DA12B3008E4031 /* Helper.swift */,
 				C66F488D244CA5D400C19912 /* Reachability.swift */,
 				C6B3C6232451D0430063C195 /* BallonMarker.swift */,
+				C6279EAD2454179E00610AF6 /* WhatsNew.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				C610DF45244C965A005B250E /* Lottie */,
 				C66F4890244CCB2200C19912 /* MBProgressHUD */,
 				C67C0F61244CE2E700CD01C7 /* UICircularProgressRing */,
+				C6279EA92454156E00610AF6 /* WhatsNewKit */,
 			);
 			productName = Sarrafi;
 			productReference = C694902623D994F4008E4031 /* Sarrafi.app */;
@@ -221,6 +227,7 @@
 				C610DF44244C965A005B250E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				C66F488F244CCB2200C19912 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 				C67C0F60244CE2E700CD01C7 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */,
+				C6279EA82454156E00610AF6 /* XCRemoteSwiftPackageReference "WhatsNewKit" */,
 			);
 			productRefGroup = C694902723D994F4008E4031 /* Products */;
 			projectDirPath = "";
@@ -258,6 +265,7 @@
 			files = (
 				C62B700423DAFFBD00BC4E1F /* CurrencyModel.swift in Sources */,
 				C61743E6244C43220085E2B2 /* NavigationController.swift in Sources */,
+				C6279EAE2454179E00610AF6 /* WhatsNew.swift in Sources */,
 				C6B3C6242451D0430063C195 /* BallonMarker.swift in Sources */,
 				C67B9730244B9B00002E37F2 /* MainController.swift in Sources */,
 				C694908E23DA136D008E4031 /* CardView.swift in Sources */,
@@ -488,6 +496,14 @@
 				minimumVersion = 3.1.6;
 			};
 		};
+		C6279EA82454156E00610AF6 /* XCRemoteSwiftPackageReference "WhatsNewKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/WhatsNewKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.2;
+			};
+		};
 		C66F488F244CCB2200C19912 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jdg/MBProgressHUD";
@@ -524,6 +540,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C610DF44244C965A005B250E /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
+		};
+		C6279EA92454156E00610AF6 /* WhatsNewKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C6279EA82454156E00610AF6 /* XCRemoteSwiftPackageReference "WhatsNewKit" */;
+			productName = WhatsNewKit;
 		};
 		C66F4890244CCB2200C19912 /* MBProgressHUD */ = {
 			isa = XCSwiftPackageProductDependency;
