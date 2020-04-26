@@ -226,7 +226,6 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     @objc func refresh() {
-        refresher.endRefreshing()
         if Reachability.isConnectedToNetwork() {
             sendCurrencyRequest()
         } else {
