@@ -72,7 +72,8 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "به روزرسانی اطلاعات" , attributes: [.font: UIFont(name: "Shabnam-FD", size: 12)!])
         refresher.addTarget(self, action: #selector(self.refresh), for: UIControl.Event.valueChanged)
-        currencyCollection.backgroundView = refresher
+        currencyCollection.refreshControl = refresher
+        
         showLoading()
         
         if (Reachability.isConnectedToNetwork()) {
