@@ -53,6 +53,7 @@ class DetailController: UIViewController {
     
     func setupInterface() {
         self.title = currency.title
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_share"), style: .done, target: self, action: #selector(shareItem))
         chartSegmentedControl.setTitleTextAttributes([.font: UIFont(name: "Shabnam-FD", size: 12)!], for: UIControl.State.normal)
         
         priceLabel.text = "\(currency.currentPrice) \(currency.toCurrency)"
@@ -263,4 +264,25 @@ class DetailController: UIViewController {
         chartSegmentedControl.isEnabled = true
     }
 
+    @objc func shareItem() {
+        var changeStatus = ""
+        switch currency.status {
+        case "high":
+            changeStatus = "افزایش"
+            break
+        case "low":
+            changeStatus = "کاهش"
+            break
+        default:
+            break
+        }
+        let headerText = "🏷 " + currency.title + " " + currency.currentPrice
+        let priceUpText = "📈 " + "بالاترین قیمت روز " + currency.priceUp
+        let priceDownText = "📉 " + "پایین‌ترین قیمت روز " + currency.priceDown
+        let priceChangeText = "🧮 " + "تغییرات قیمت: " + changeStatus + currency.priceChange
+        let pricePercentChangeText = "📊 " + "درصد تغییرات قیمت: " + changeStatus + currency.percentChange
+        let timeText = "🕰 " + updateLabel.text!
+        let appAd = "اپ صرافی"
+        shareText(text: headerText + "\n" + priceUpText + "\n" + priceDownText + "\n" + priceChangeText + "\n" + pricePercentChangeText + "\n" + timeText + "\n" + appAd , viewController: self)
+    }
 }
