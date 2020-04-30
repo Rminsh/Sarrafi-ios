@@ -13,7 +13,7 @@ struct ChartStruct : Codable {
     let chart_summary: String
     let data_chart, currency: String
     let is_today: Bool
-    let today_vs_yesterday_chart, chart_15, chart_1, chart_3, chart_6: String
+    let chart_15, chart_1, chart_3, chart_6: String
     let chart_detail: [String: [String]]
     let invest: [String: String]
     let today_table: [TodayTable]

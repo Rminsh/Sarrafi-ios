@@ -144,7 +144,6 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
                         self.addObj(currencyObject: decoder.current.gerami, currencyName: Current.CodingKeys.gerami.rawValue, title: "سکه گرمی", toCurrency: currency.rial)
                         self.addObj(currencyObject: decoder.current.ons, currencyName: Current.CodingKeys.ons.rawValue, title: "انس طلا", toCurrency: currency.rial)
                         self.addObj(currencyObject: decoder.current.silver, currencyName: Current.CodingKeys.silver.rawValue, title: "انس نقره", toCurrency: currency.rial)
-                        self.addObj(currencyObject: decoder.current.gold_mini_size, currencyName: Current.CodingKeys.gold_mini_size.rawValue, title: "طلای دست دوم", toCurrency: currency.rial)
                         
                         self.addObj(currencyObject: decoder.current.bitcoin, currencyName: Current.CodingKeys.bitcoin.rawValue, title: "بیت کوین / Bitcoin", toCurrency: currency.dollar)
                         self.addObj(currencyObject: decoder.current.ethereum, currencyName: Current.CodingKeys.ethereum.rawValue, title: "اتریوم / Ethereum", toCurrency: currency.dollar)
