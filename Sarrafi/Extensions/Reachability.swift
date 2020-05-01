@@ -1,9 +1,9 @@
 //
 //  Reachability.swift
-//  Shalchian
+//  Sarrafi
 //
 //  Created by armin on 5/18/19.
-//  Copyright © 2019 Shalchian. All rights reserved.
+//  Copyright © 2020 Shalchian. All rights reserved.
 //
 
 import Foundation

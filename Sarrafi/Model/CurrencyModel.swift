@@ -5,7 +5,6 @@
 //  Created by armin on 10/18/19.
 //  Copyright © 2020 Sarrafi. All rights reserved.
 //
-//   let currencyStruct = try? newJSONDecoder().decode(CurrencyStruct.self, from: jsonData)
 
 import Foundation
 

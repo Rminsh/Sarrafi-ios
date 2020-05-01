@@ -1,9 +1,9 @@
 //
 //  CardView.swift
-//  UniAlt
+//  Sarrafi
 //
 //  Created by armin on 6/5/18.
-//  Copyright © 2018 armin. All rights reserved.
+//  Copyright © 2020 armin. All rights reserved.
 //
 
 import UIKit
