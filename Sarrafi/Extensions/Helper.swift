@@ -38,15 +38,4 @@ extension String {
         return self
     }
   }
-  
-  public func replaceAll(of pattern:String, with replacement:String, options: NSRegularExpression.Options = []) -> String {
-    do {
-        let regex = try NSRegularExpression(pattern: pattern, options: [])
-        let range = NSRange(0..<self.utf16.count)
-        return regex.stringByReplacingMatches(in: self, options: [], range: range, withTemplate: replacement)
-    } catch {
-        NSLog("replaceAll error: \(error)")
-        return self
-    }
-  }
 }

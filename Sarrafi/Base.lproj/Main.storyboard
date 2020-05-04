@@ -220,7 +220,7 @@
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="2wb-Iv-Icf">
                                                 <rect key="frame" x="0.0" y="78" width="296" height="32"/>
                                                 <segments>
-                                                    <segment title="امروز"/>
+                                                    <segment title="امروز" enabled="NO"/>
                                                     <segment title="ماهانه"/>
                                                     <segment title="۳ ماهه"/>
                                                     <segment title="۶ ماهه"/>

@@ -128,11 +128,13 @@ class DetailController: UIViewController {
                     do {
                         let decoder = try JSONDecoder().decode(ChartStruct.self, from: response.data!)
                         
+                        // TODO: Today Chart has slow performance on UI
                         // Get Today chart
-                        for item in decoder.today_table.reversed() {
+                        /* for item in decoder.today_table.reversed() {
+                            let price = Double(item.price.replacingOccurrences(of: ",", with: "", options: .literal, range: nil))
                             self.dateDaily.append(item.time)
-                            self.pricesDaily.append((item.price! as NSString).doubleValue)
-                        }
+                            self.pricesDaily.append(price!)
+                        }*/
                         
                         // Get Monthly Chart
                         let chart_1 = "[" + decoder.chart_1.replaceFirst(of: ".$", with: "") + "]"
@@ -187,73 +189,74 @@ class DetailController: UIViewController {
         switch chartSegmentedControl.selectedSegmentIndex {
         case 0:
             // Today chart
-            setDateChart(date: dateDaily)
-            setDataChart(price: pricesDaily)
+            setDataChart(date: dateDaily, price: pricesDaily)
             break
         case 1:
             // Monthly Chart
-            setDateChart(date: dateMonthly)
-            setDataChart(price: pricesMonthly)
+            setDataChart(date: dateMonthly, price: pricesMonthly)
         case 2:
             // 3 Months Chart
-            setDateChart(date: dateThreeMonths)
-            setDataChart(price: pricesThreeMonths)
+            setDataChart(date: dateThreeMonths, price: pricesThreeMonths)
         case 3:
             // 6 Months Chart
-            setDateChart(date: dateSixMonths)
-            setDataChart(price: pricesSixMonths)
+            setDataChart(date: dateSixMonths, price: pricesSixMonths)
         case 4:
             // Chart Summery
-            setDateChart(date: dateAllMonths)
-            setDataChart(price: pricesAllMonths)
+            setDataChart(date: dateAllMonths, price: pricesAllMonths)
+            
         default:
             break
         }
     }
     
-    func setDateChart(date: [String]) {
-        let xAxis = chart.xAxis
-        xAxis.valueFormatter = IndexAxisValueFormatter(values: date)
-        let marker:BalloonMarker = BalloonMarker(
-            date: date,
-            priceType: currency.toCurrency,
-            color: UIColor(named: "Accent")!,
-            font: UIFont(name: "Shabnam-FD", size: 12)!,
-            textColor: UIColor.white,
-            insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 25.0, right: 7.0
-        ))
-         marker.minimumSize = CGSize(width: 75.0, height: 35.0)//CGSize(75.0, 35.0)
-        chart.marker = marker
-    }
-    
-    func setDataChart(price: [Double]) {
+    func setDataChart(date: [String], price: [Double]) {
         
-        var dataEntry = [ChartDataEntry]()
-        let circleStatus = price.count <= 90
-        
-        for item in 0..<price.count {
-            dataEntry.append(ChartDataEntry(x: Double(item), y: Double(price[item])))
+        // Set xAxis
+        DispatchQueue.main.async {
+            let xAxis = self.chart.xAxis
+            xAxis.avoidFirstLastClippingEnabled = false
+            xAxis.valueFormatter = IndexAxisValueFormatter(values: date)
+            let marker:BalloonMarker = BalloonMarker(
+                date: date,
+                priceType: self.currency.toCurrency,
+                color: UIColor(named: "Accent")!,
+                font: UIFont(name: "Shabnam-FD", size: 12)!,
+                textColor: UIColor.white,
+                insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 25.0, right: 7.0
+            ))
+             marker.minimumSize = CGSize(width: 75.0, height: 35.0)//CGSize(75.0, 35.0)
+            self.chart.marker = marker
         }
         
-        let lineDataSet = LineChartDataSet(entries: dataEntry, label: "")
-        lineDataSet.mode = .horizontalBezier
-        
-        lineDataSet.lineWidth = 3
-        lineDataSet.drawCirclesEnabled = circleStatus
-        lineDataSet.setCircleColor(UIColor(named: "Accent")!)
-        lineDataSet.setColor(UIColor(named: "Accent")!)
-        lineDataSet.circleRadius = 6
-        lineDataSet.circleHoleColor = UIColor.white
-        lineDataSet.circleHoleRadius = 4
-        lineDataSet.drawValuesEnabled = false
-        lineDataSet.drawHorizontalHighlightIndicatorEnabled = false
-        lineDataSet.drawVerticalHighlightIndicatorEnabled = false
-        
-        let data = LineChartData()
-        data.setDrawValues(false)
-        data.addDataSet(lineDataSet)
-        chart.data = data
-        chart.invalidateIntrinsicContentSize()
+        // Set yAxis
+        DispatchQueue.main.async {
+            var dataEntry = [ChartDataEntry]()
+            let circleStatus = price.count <= 90
+            
+            for item in 0..<price.count {
+                dataEntry.append(ChartDataEntry(x: Double(item), y: price[item]))
+            }
+            
+            let lineDataSet = LineChartDataSet(entries: dataEntry, label: "")
+            lineDataSet.mode = .horizontalBezier
+            
+            lineDataSet.lineWidth = 3
+            lineDataSet.drawCirclesEnabled = circleStatus
+            lineDataSet.setCircleColor(UIColor(named: "Accent")!)
+            lineDataSet.setColor(UIColor(named: "Accent")!)
+            lineDataSet.circleRadius = 6
+            lineDataSet.circleHoleColor = UIColor.white
+            lineDataSet.circleHoleRadius = 4
+            lineDataSet.drawValuesEnabled = false
+            lineDataSet.drawHorizontalHighlightIndicatorEnabled = false
+            lineDataSet.drawVerticalHighlightIndicatorEnabled = false
+            
+            let data = LineChartData()
+            data.setDrawValues(false)
+            data.addDataSet(lineDataSet)
+            self.chart.data = data
+            self.chart.invalidateIntrinsicContentSize()
+        }
         
         showChart()
     }

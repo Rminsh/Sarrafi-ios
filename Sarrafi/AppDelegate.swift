@@ -17,6 +17,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIView.appearance().semanticContentAttribute = .forceRightToLeft
         return true
     }
-
 }
-
