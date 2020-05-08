@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="16096" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="16012"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Shabnam-Bold-FD.ttf">
+            <string>Shabnam-Bold-FD</string>
+        </array>
+        <array key="Shabnam-Light-FD.ttf">
+            <string>Shabnam-Light-FD</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Currency Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="CurrencyController" customModule="Sarrafi_Watchkit_App_Extension">
+                    <items>
+                        <table alignment="left" semanticContentAttribute="forceRightToLeft" id="YLS-Tv-l7f">
+                            <items>
+                                <tableRow identifier="currency_row" id="6ey-fR-fpJ" customClass="CurrencyRow" customModule="Sarrafi_Watchkit_App_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" spacing="5" id="kiJ-t6-aOl">
+                                        <items>
+                                            <label width="1" alignment="center" verticalAlignment="center" text="دلار" textAlignment="left" id="rcX-Y8-Fax">
+                                                <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="14"/>
+                                            </label>
+                                            <label width="1" alignment="center" verticalAlignment="center" text="16000 تومان" textAlignment="right" id="otu-wF-vys">
+                                                <fontDescription key="font" name="Shabnam-Bold-FD" family="Shabnam FD" pointSize="15"/>
+                                            </label>
+                                            <group width="1" alignment="center" verticalAlignment="center" id="b7f-ky-KU3">
+                                                <items>
+                                                    <label width="0.5" alignment="left" text="تغییرات" textAlignment="right" id="xFB-Um-4Vo">
+                                                        <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="12"/>
+                                                    </label>
+                                                    <label width="0.5" alignment="left" text="تاریخ" textAlignment="left" id="vOM-Mr-HyR">
+                                                        <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="12"/>
+                                                    </label>
+                                                </items>
+                                            </group>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="background" destination="kiJ-t6-aOl" id="00p-WT-8Kg"/>
+                                        <outlet property="percentLabel" destination="xFB-Um-4Vo" id="W9s-L1-uo3"/>
+                                        <outlet property="priceLabel" destination="otu-wF-vys" id="X2C-Ky-Q9S"/>
+                                        <outlet property="timeLabel" destination="vOM-Mr-HyR" id="Has-Dd-ZwQ"/>
+                                        <outlet property="titleLabel" destination="rcX-Y8-Fax" id="q4q-IC-2iD"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="currencyTable" destination="YLS-Tv-l7f" id="fEp-3B-7Vo"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="25" y="29"/>
+        </scene>
+    </scenes>
+</document>
