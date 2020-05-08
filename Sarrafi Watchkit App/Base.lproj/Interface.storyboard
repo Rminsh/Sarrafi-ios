@@ -9,6 +9,9 @@
         <array key="Shabnam-Bold-FD.ttf">
             <string>Shabnam-Bold-FD</string>
         </array>
+        <array key="Shabnam-FD.ttf">
+            <string>Shabnam-FD</string>
+        </array>
         <array key="Shabnam-Light-FD.ttf">
             <string>Shabnam-Light-FD</string>
         </array>
@@ -19,26 +22,27 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="CurrencyController" customModule="Sarrafi_Watchkit_App_Extension">
                     <items>
-                        <table alignment="left" semanticContentAttribute="forceRightToLeft" id="YLS-Tv-l7f">
+                        <table alignment="center" pagingScroll="YES" id="YLS-Tv-l7f">
                             <items>
                                 <tableRow identifier="currency_row" id="6ey-fR-fpJ" customClass="CurrencyRow" customModule="Sarrafi_Watchkit_App_Extension">
-                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" spacing="5" id="kiJ-t6-aOl">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" radius="6" spacing="5" id="kiJ-t6-aOl">
                                         <items>
-                                            <label width="1" alignment="center" verticalAlignment="center" text="دلار" textAlignment="left" id="rcX-Y8-Fax">
-                                                <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="14"/>
+                                            <label width="1" alignment="center" verticalAlignment="center" text="ارز" textAlignment="right" id="rcX-Y8-Fax">
+                                                <fontDescription key="font" name="Shabnam-FD" family="Shabnam FD" pointSize="15"/>
                                             </label>
-                                            <label width="1" alignment="center" verticalAlignment="center" text="16000 تومان" textAlignment="right" id="otu-wF-vys">
-                                                <fontDescription key="font" name="Shabnam-Bold-FD" family="Shabnam FD" pointSize="15"/>
+                                            <label width="1" alignment="center" verticalAlignment="center" text="- تومان" textAlignment="left" id="otu-wF-vys">
+                                                <fontDescription key="font" name="Shabnam-Bold-FD" family="Shabnam FD" pointSize="17"/>
                                             </label>
                                             <group width="1" alignment="center" verticalAlignment="center" id="b7f-ky-KU3">
                                                 <items>
-                                                    <label width="0.5" alignment="left" text="تغییرات" textAlignment="right" id="xFB-Um-4Vo">
-                                                        <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="12"/>
-                                                    </label>
                                                     <label width="0.5" alignment="left" text="تاریخ" textAlignment="left" id="vOM-Mr-HyR">
                                                         <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="12"/>
                                                     </label>
+                                                    <label width="0.5" alignment="left" text="تغییرات" textAlignment="right" id="xFB-Um-4Vo">
+                                                        <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="12"/>
+                                                    </label>
                                                 </items>
+                                                <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="3"/>
                                             </group>
                                         </items>
                                     </group>
@@ -48,6 +52,7 @@
                                         <outlet property="priceLabel" destination="otu-wF-vys" id="X2C-Ky-Q9S"/>
                                         <outlet property="timeLabel" destination="vOM-Mr-HyR" id="Has-Dd-ZwQ"/>
                                         <outlet property="titleLabel" destination="rcX-Y8-Fax" id="q4q-IC-2iD"/>
+                                        <segue destination="mfa-1u-tdV" kind="push" identifier="rowDetail" id="5Nb-6f-VEU"/>
                                     </connections>
                                 </tableRow>
                             </items>
@@ -59,6 +64,75 @@
                 </controller>
             </objects>
             <point key="canvasLocation" x="25" y="29"/>
+        </scene>
+        <!--Detail Controller-->
+        <scene sceneID="oZd-ky-lGw">
+            <objects>
+                <controller id="mfa-1u-tdV" customClass="DetailController" customModule="Sarrafi_Watchkit_App_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="center" verticalAlignment="center" layout="vertical" id="jXV-9l-Z72">
+                            <items>
+                                <label width="1" alignment="center" verticalAlignment="center" text="ارز" textAlignment="center" id="pai-Sc-N4w">
+                                    <fontDescription key="font" name="Shabnam-FD" family="Shabnam FD" pointSize="17"/>
+                                </label>
+                                <label width="1" alignment="center" verticalAlignment="center" text="- ریال" textAlignment="center" minimumScaleFactor="0.5" id="aOF-zD-82k">
+                                    <fontDescription key="font" name="Shabnam-Bold-FD" family="Shabnam FD" pointSize="20"/>
+                                </label>
+                                <group width="1" alignment="center" verticalAlignment="center" id="Rj6-HD-y5L">
+                                    <items>
+                                        <label width="0.5" alignment="center" verticalAlignment="center" text="۰ ریال" textAlignment="center" minimumScaleFactor="0.59999999999999998" id="A0Q-XO-uXH">
+                                            <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="14"/>
+                                        </label>
+                                        <label width="0.5" alignment="center" verticalAlignment="center" text="(0.0%)" textAlignment="center" minimumScaleFactor="0.5" id="2Ls-QQ-1K0">
+                                            <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="14"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group width="1" alignment="center" verticalAlignment="center" id="6kL-HT-kI7">
+                                    <items>
+                                        <group width="0.495" alignment="center" verticalAlignment="center" layout="vertical" id="lK2-eh-9Yq">
+                                            <items>
+                                                <label width="1" alignment="left" text="بالاترین قیمت" textAlignment="center" minimumScaleFactor="0.5" id="SYg-oR-jOm">
+                                                    <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="10"/>
+                                                </label>
+                                                <label width="1" alignment="left" text="۰ ریال" textAlignment="center" minimumScaleFactor="0.5" id="lYW-xm-NB4">
+                                                    <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="12"/>
+                                                </label>
+                                            </items>
+                                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="3"/>
+                                        </group>
+                                        <separator alignment="center" verticalAlignment="center" alpha="0.29999999999999999" id="sXo-h3-h9A"/>
+                                        <group width="0.495" alignment="center" verticalAlignment="center" layout="vertical" id="lAK-H5-Cd9">
+                                            <items>
+                                                <label width="1" alignment="left" text=" پایین‌ترین قیمت" textAlignment="center" minimumScaleFactor="0.5" id="vnc-Nx-JT1">
+                                                    <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="10"/>
+                                                </label>
+                                                <label width="1" alignment="left" text="۰ ریال" textAlignment="center" minimumScaleFactor="0.5" id="30E-rq-9xe">
+                                                    <fontDescription key="font" name="Shabnam-Light-FD" family="Shabnam FD" pointSize="12"/>
+                                                </label>
+                                            </items>
+                                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="3"/>
+                                        </group>
+                                    </items>
+                                </group>
+                                <label width="1" alignment="center" verticalAlignment="center" text="آخرین به‌روزرسانی: ---" textAlignment="center" minimumScaleFactor="0.5" id="lQ1-9i-Ce7">
+                                    <fontDescription key="font" name="Shabnam-FD" family="Shabnam FD" pointSize="10"/>
+                                </label>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="highPriceLabel" destination="lYW-xm-NB4" id="GED-Ar-ste"/>
+                        <outlet property="lowPriceLabel" destination="30E-rq-9xe" id="NfJ-ZZ-0Rp"/>
+                        <outlet property="percentChangeLabel" destination="2Ls-QQ-1K0" id="6dD-1m-cIJ"/>
+                        <outlet property="priceChangeLabel" destination="A0Q-XO-uXH" id="lAj-YR-kLQ"/>
+                        <outlet property="priceLabel" destination="aOF-zD-82k" id="aDD-11-l3X"/>
+                        <outlet property="timeLabel" destination="lQ1-9i-Ce7" id="7UN-pN-SS8"/>
+                        <outlet property="titleLabel" destination="pai-Sc-N4w" id="5gi-rQ-sjB"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="308" y="29"/>
         </scene>
     </scenes>
 </document>

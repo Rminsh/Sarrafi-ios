@@ -20,6 +20,7 @@
 		C6757075244F8BEA00999245 /* ChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6757074244F8BE900999245 /* ChartModel.swift */; };
 		C67B9730244B9B00002E37F2 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67B972F244B9B00002E37F2 /* MainController.swift */; };
 		C67C0F62244CE2E700CD01C7 /* UICircularProgressRing in Frameworks */ = {isa = PBXBuildFile; productRef = C67C0F61244CE2E700CD01C7 /* UICircularProgressRing */; };
+		C68C5BE32465EB3900CB9877 /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68C5BE22465EB3900CB9877 /* DetailController.swift */; };
 		C694902A23D994F4008E4031 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C694902923D994F4008E4031 /* AppDelegate.swift */; };
 		C694903123D994F4008E4031 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C694902F23D994F4008E4031 /* Main.storyboard */; };
 		C694903323D994F6008E4031 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C694903223D994F6008E4031 /* Assets.xcassets */; };
@@ -46,6 +47,13 @@
 		C6A1AFF02465560D00731CCA /* Shabnam-Medium-FD.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C694908423DA0697008E4031 /* Shabnam-Medium-FD.ttf */; };
 		C6A1AFF12465560D00731CCA /* Shabnam-Bold-FD.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C694908123DA066E008E4031 /* Shabnam-Bold-FD.ttf */; };
 		C6A1AFF424655AFA00731CCA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C6A1AFF324655AFA00731CCA /* Alamofire */; };
+		C6A1AFFD24658F1B00731CCA /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A1AFFC24658F1B00731CCA /* CurrencyService.swift */; };
+		C6A1AFFE24658F1B00731CCA /* CurrencyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A1AFFC24658F1B00731CCA /* CurrencyService.swift */; };
+		C6A1B00024658F3E00731CCA /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B700323DAFFBD00BC4E1F /* CurrencyModel.swift */; };
+		C6A1B00324658F6D00731CCA /* CurrencyListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A1B00224658F6D00731CCA /* CurrencyListResponse.swift */; };
+		C6A1B00424658F6D00731CCA /* CurrencyListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A1B00224658F6D00731CCA /* CurrencyListResponse.swift */; };
+		C6A1B0072465932C00731CCA /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A1B0062465932C00731CCA /* NetworkingError.swift */; };
+		C6A1B0082465932C00731CCA /* NetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6A1B0062465932C00731CCA /* NetworkingError.swift */; };
 		C6B3C6242451D0430063C195 /* BallonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B3C6232451D0430063C195 /* BallonMarker.swift */; };
 		C6B7AB17244D7E650097E3EA /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B7AB16244D7E650097E3EA /* DetailController.swift */; };
 		C6C381DC24445081001F6289 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C6C381DB24445081001F6289 /* Alamofire */; };
@@ -102,6 +110,7 @@
 		C66F488D244CA5D400C19912 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		C6757074244F8BE900999245 /* ChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartModel.swift; sourceTree = "<group>"; };
 		C67B972F244B9B00002E37F2 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		C68C5BE22465EB3900CB9877 /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		C694902623D994F4008E4031 /* Sarrafi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sarrafi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C694902923D994F4008E4031 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C694903023D994F4008E4031 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,6 +135,9 @@
 		C6A1AFD824653D7C00731CCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C6A1AFDA24653D7C00731CCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6A1AFE62465507A00731CCA /* CurrencyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRow.swift; sourceTree = "<group>"; };
+		C6A1AFFC24658F1B00731CCA /* CurrencyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrencyService.swift; path = ../../../../../Documents/CurrencyService.swift; sourceTree = "<group>"; };
+		C6A1B00224658F6D00731CCA /* CurrencyListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrencyListResponse.swift; path = ../../../../../Documents/CurrencyListResponse.swift; sourceTree = "<group>"; };
+		C6A1B0062465932C00731CCA /* NetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingError.swift; sourceTree = "<group>"; };
 		C6B3C6232451D0430063C195 /* BallonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallonMarker.swift; sourceTree = "<group>"; };
 		C6B7AB16244D7E650097E3EA /* DetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		C6C381DD244450A7001F6289 /* Sarrafi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sarrafi.entitlements; sourceTree = "<group>"; };
@@ -159,7 +171,6 @@
 		C62B700223DAFFAA00BC4E1F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C62B700323DAFFBD00BC4E1F /* CurrencyModel.swift */,
 				C6757074244F8BE900999245 /* ChartModel.swift */,
 			);
 			path = Model;
@@ -168,6 +179,7 @@
 		C694901D23D994F4008E4031 = {
 			isa = PBXGroup;
 			children = (
+				C6A1AFFA24658EE300731CCA /* Core */,
 				C694902823D994F4008E4031 /* Sarrafi */,
 				C6A1AFC424653D7900731CCA /* Sarrafi Watchkit App */,
 				C6A1AFD324653D7B00731CCA /* Sarrafi Watchkit App Extension */,
@@ -261,8 +273,8 @@
 		C6A1AFD324653D7B00731CCA /* Sarrafi Watchkit App Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C6A1AFD424653D7C00731CCA /* CurrencyController.swift */,
-				C6A1AFE62465507A00731CCA /* CurrencyRow.swift */,
+				C6A1B0092465CC3C00731CCA /* Controller */,
+				C6A1B00A2465CC4500731CCA /* View */,
 				C6A1AFD624653D7C00731CCA /* ExtensionDelegate.swift */,
 				C6A1AFD824653D7C00731CCA /* Assets.xcassets */,
 				C6A1AFDA24653D7C00731CCA /* Info.plist */,
@@ -275,6 +287,66 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C6A1AFFA24658EE300731CCA /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C6A1B0052465932500731CCA /* Error */,
+				C6A1B00124658F4C00731CCA /* Response */,
+				C6A1AFFF24658F3600731CCA /* Model */,
+				C6A1AFFB24658F0D00731CCA /* Services */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C6A1AFFB24658F0D00731CCA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C6A1AFFC24658F1B00731CCA /* CurrencyService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C6A1AFFF24658F3600731CCA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C62B700323DAFFBD00BC4E1F /* CurrencyModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C6A1B00124658F4C00731CCA /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				C6A1B00224658F6D00731CCA /* CurrencyListResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		C6A1B0052465932500731CCA /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				C6A1B0062465932C00731CCA /* NetworkingError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		C6A1B0092465CC3C00731CCA /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C6A1AFD424653D7C00731CCA /* CurrencyController.swift */,
+				C68C5BE22465EB3900CB9877 /* DetailController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C6A1B00A2465CC4500731CCA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C6A1AFE62465507A00731CCA /* CurrencyRow.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,8 +513,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C62B700423DAFFBD00BC4E1F /* CurrencyModel.swift in Sources */,
+				C6A1B00324658F6D00731CCA /* CurrencyListResponse.swift in Sources */,
 				C61743E6244C43220085E2B2 /* NavigationController.swift in Sources */,
 				C6279EAE2454179E00610AF6 /* WhatsNew.swift in Sources */,
+				C6A1B0072465932C00731CCA /* NetworkingError.swift in Sources */,
+				C6A1AFFD24658F1B00731CCA /* CurrencyService.swift in Sources */,
 				C6B3C6242451D0430063C195 /* BallonMarker.swift in Sources */,
 				C67B9730244B9B00002E37F2 /* MainController.swift in Sources */,
 				C694908E23DA136D008E4031 /* CardView.swift in Sources */,
@@ -459,7 +534,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C68C5BE32465EB3900CB9877 /* DetailController.swift in Sources */,
+				C6A1B00024658F3E00731CCA /* CurrencyModel.swift in Sources */,
+				C6A1AFFE24658F1B00731CCA /* CurrencyService.swift in Sources */,
 				C6A1AFE72465507A00731CCA /* CurrencyRow.swift in Sources */,
+				C6A1B0082465932C00731CCA /* NetworkingError.swift in Sources */,
+				C6A1B00424658F6D00731CCA /* CurrencyListResponse.swift in Sources */,
 				C6A1AFD724653D7C00731CCA /* ExtensionDelegate.swift in Sources */,
 				C6A1AFD524653D7C00731CCA /* CurrencyController.swift in Sources */,
 			);
