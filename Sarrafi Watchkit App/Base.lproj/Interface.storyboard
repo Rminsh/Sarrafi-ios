@@ -15,6 +15,9 @@
         <array key="Shabnam-Light-FD.ttf">
             <string>Shabnam-Light-FD</string>
         </array>
+        <array key="Shabnam-Medium-FD.ttf">
+            <string>Shabnam-Medium-FD</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Currency Controller-->
@@ -22,7 +25,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="CurrencyController" customModule="Sarrafi_Watchkit_App_Extension">
                     <items>
-                        <table alignment="center" pagingScroll="YES" id="YLS-Tv-l7f">
+                        <table alignment="center" hidden="YES" pagingScroll="YES" id="YLS-Tv-l7f">
                             <items>
                                 <tableRow identifier="currency_row" id="6ey-fR-fpJ" customClass="CurrencyRow" customModule="Sarrafi_Watchkit_App_Extension">
                                     <group key="rootItem" width="1" height="0.0" alignment="left" layout="vertical" radius="6" spacing="5" id="kiJ-t6-aOl">
@@ -57,9 +60,27 @@
                                 </tableRow>
                             </items>
                         </table>
+                        <group width="1" alignment="center" verticalAlignment="center" layout="vertical" spacing="5" id="hyj-u4-3jH">
+                            <items>
+                                <imageView alignment="center" verticalAlignment="center" id="unZ-w9-DkB"/>
+                                <label alignment="center" verticalAlignment="center" text="خطا" id="pr1-K8-qBK">
+                                    <fontDescription key="font" name="Shabnam-FD" family="Shabnam FD" pointSize="14"/>
+                                </label>
+                                <button width="1" alignment="center" verticalAlignment="center" title="تلاش دوباره" id="QAr-eM-Js7">
+                                    <color key="titleColor" red="0.17254901959999999" green="0.66274509800000003" blue="0.73725490199999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" name="Shabnam-Medium-FD" family="Shabnam FD" pointSize="15"/>
+                                    <connections>
+                                        <action selector="tryAgainPressed" destination="AgC-eL-Hgc" id="jd3-pU-jl5"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
                     </items>
                     <connections>
                         <outlet property="currencyTable" destination="YLS-Tv-l7f" id="fEp-3B-7Vo"/>
+                        <outlet property="emptyStateButton" destination="QAr-eM-Js7" id="vZt-NQ-xqs"/>
+                        <outlet property="emptyStateImage" destination="unZ-w9-DkB" id="9i3-nG-DpT"/>
+                        <outlet property="emptyStateLabel" destination="pr1-K8-qBK" id="cSj-Ha-ZgC"/>
                     </connections>
                 </controller>
             </objects>
