@@ -19,6 +19,7 @@ class CurrencyController: WKInterfaceController {
     var currencyStats = [CurrencyModel]()
     var indicator: EMTLoadingIndicator?
     
+    // MARK: - View life cycle
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         sendCurrencyRequest()
@@ -88,6 +89,7 @@ class CurrencyController: WKInterfaceController {
         emptyStateButton.setHidden(true)
     }
     
+    // MARK: - UI Show Items
     func showItems() {
         indicator?.hide()
         currencyTable.setHidden(false)
@@ -106,6 +108,7 @@ class CurrencyController: WKInterfaceController {
         }
     }
     
+    // MARK: - Action Retry Button
     @IBAction func tryAgainPressed() {
         sendCurrencyRequest()
     }
