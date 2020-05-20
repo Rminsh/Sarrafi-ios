@@ -25,20 +25,22 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>WKAppBundleIdentifier</key>
-			<string>shalchian.com.Sarrafi.watchkitapp</string>
+			<string>shalchian.com.sarrafi.watchkitapp</string>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Shabnam-FD.ttf</string>
+		<string>Shabnam-Bold-FD.ttf</string>
+		<string>Shabnam-Light-FD.ttf</string>
+		<string>Shabnam-Medium-FD.ttf</string>
+		<string>Shabnam-Thin-FD.ttf</string>
+	</array>
 	<key>WKExtensionDelegateClassName</key>
 	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
-    <key>UIAppFonts</key>
-    <array>
-        <string>Shabnam-FD.ttf</string>
-        <string>Shabnam-Bold-FD.ttf</string>
-        <string>Shabnam-Light-FD.ttf</string>
-        <string>Shabnam-Medium-FD.ttf</string>
-        <string>Shabnam-Thin-FD.ttf</string>
-    </array>
+	<key>WKRunsIndependentlyOfCompanionApp</key>
+	<true/>
 </dict>
 </plist>

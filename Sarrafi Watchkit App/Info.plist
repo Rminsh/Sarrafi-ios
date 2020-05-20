@@ -20,22 +20,22 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Shabnam-FD.ttf</string>
+		<string>Shabnam-Bold-FD.ttf</string>
+		<string>Shabnam-Light-FD.ttf</string>
+		<string>Shabnam-Medium-FD.ttf</string>
+		<string>Shabnam-Thin-FD.ttf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>shalchian.com.Sarrafi</string>
+	<string>shalchian.com.sarrafi</string>
 	<key>WKWatchKitApp</key>
 	<true/>
-    <key>UIAppFonts</key>
-    <array>
-        <string>Shabnam-FD.ttf</string>
-        <string>Shabnam-Bold-FD.ttf</string>
-        <string>Shabnam-Light-FD.ttf</string>
-        <string>Shabnam-Medium-FD.ttf</string>
-        <string>Shabnam-Thin-FD.ttf</string>
-    </array>
 </dict>
 </plist>

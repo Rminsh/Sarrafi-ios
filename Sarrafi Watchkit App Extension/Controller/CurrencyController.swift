@@ -7,7 +7,6 @@
 //
 
 import WatchKit
-import Alamofire
 
 class CurrencyController: WKInterfaceController {
 
