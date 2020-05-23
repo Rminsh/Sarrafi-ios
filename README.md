@@ -3,7 +3,7 @@
 Sarrafi
 ======
 
-A simple iOS application that shows latest price of currencies, gold, oil and digital currencies.
+Simple iOS and WatchOS applications that shows latest price of currencies, gold, oil and digital currencies.
 
 This project implemented in [Persian language](https://en.wikipedia.org/wiki/Persian_language) and use [tgju.org](http://www.tgju.org/) website API to get the latest prices.
 
@@ -17,12 +17,17 @@ This project implemented in [Persian language](https://en.wikipedia.org/wiki/Per
 
 
 ## Previews 📱
-
+<h4 align="center">iOS</p>
 <p align="center">
 <img src="preview/preview_1.png" height="350"/>
 <img src="preview/preview_2.png" height="350"/>
 <img src="preview/preview_3.png" height="350"/>
 <img src="preview/preview_4.png" height="350"/>
+
+<h4 align="center">WatchOS</p>
+<p align="center">
+<img src="preview/preview_5.png" height="350"/>
+<img src="preview/preview_6.png" height="350"/>
 
 
 ## How to build 🛠
