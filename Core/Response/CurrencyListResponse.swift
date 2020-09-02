@@ -36,8 +36,8 @@ struct CurrencyListResponse {
         addObj(currencyObject: currencyStruct.current.geram18, currencyName: Current.CodingKeys.geram18.rawValue, title: "طلای ۱۸ عیار", toCurrency: currency.rial)
         addObj(currencyObject: currencyStruct.current.mesghal, currencyName: Current.CodingKeys.mesghal.rawValue, title: "مثقال طلا", toCurrency: currency.rial)
         addObj(currencyObject: currencyStruct.current.gerami, currencyName: Current.CodingKeys.gerami.rawValue, title: "سکه گرمی", toCurrency: currency.rial)
-        addObj(currencyObject: currencyStruct.current.ons, currencyName: Current.CodingKeys.ons.rawValue, title: "انس طلا", toCurrency: currency.rial)
-        addObj(currencyObject: currencyStruct.current.silver, currencyName: Current.CodingKeys.silver.rawValue, title: "انس نقره", toCurrency: currency.rial)
+        addObj(currencyObject: currencyStruct.current.ons, currencyName: Current.CodingKeys.ons.rawValue, title: "انس طلا", toCurrency: currency.dollar)
+        addObj(currencyObject: currencyStruct.current.silver, currencyName: Current.CodingKeys.silver.rawValue, title: "انس نقره", toCurrency: currency.dollar)
         
         addObj(currencyObject: currencyStruct.current.bitcoin, currencyName: Current.CodingKeys.bitcoin.rawValue, title: "بیت کوین / Bitcoin", toCurrency: currency.dollar)
         addObj(currencyObject: currencyStruct.current.ethereum, currencyName: Current.CodingKeys.ethereum.rawValue, title: "اتریوم / Ethereum", toCurrency: currency.dollar)
