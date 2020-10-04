@@ -46,30 +46,28 @@ class CurrencyController: WKInterfaceController {
         do {
             showLoading()
             
-            try CurrencyService.shared.getList { (response, error) in
+            try CurrencyService.shared.getList { (result) in
                 
-                if let error = error {
-                    switch error {
-                    case NetworkingError.badNetworkingRequest:
-                        self.showError(error: "خطا در ارسال درخواست", asEmptyState: self.currencyStats.isEmpty)
-                    case NetworkingError.errorParse:
-                        self.showError(error: "خطا در بارگزاری اطلاعات", asEmptyState: self.currencyStats.isEmpty)
-                    default:
-                        self.showError(error: "خطا", asEmptyState: self.currencyStats.isEmpty)
-                    }
-                } else {
-                    if let result = response?.currencyStats {
-                        self.currencyStats = result
-                        self.currencyTable.setNumberOfRows(self.currencyStats.count, withRowType: "currency_row")
-                        
-                        for (index, currencyModel) in self.currencyStats.enumerated() {
-                            guard let row = self.currencyTable.rowController(at: index) as? CurrencyRow else { continue }
-                            row.updateUI(items: currencyModel)
-                        }
-                        
-                        self.showItems()
-                    }
-                }
+				switch result {
+				case .failure(let error):
+					switch error {
+					case .connectionIssue:
+						self.showError(error: "خطا در ارسال درخواست", asEmptyState: self.currencyStats.isEmpty)
+					case .parsingError:
+						self.showError(error: "خطا در بارگزاری اطلاعات", asEmptyState: self.currencyStats.isEmpty)
+					}
+				case .success(let response):
+					let stats = response.currencyStats
+					self.currencyStats = stats
+					self.currencyTable.setNumberOfRows(self.currencyStats.count, withRowType: "currency_row")
+					
+					for (index, currencyModel) in self.currencyStats.enumerated() {
+						guard let row = self.currencyTable.rowController(at: index) as? CurrencyRow else { continue }
+						row.updateUI(items: currencyModel)
+					}
+					
+					self.showItems()
+				}
             }
         } catch {
              self.showError(error: "خطا در ارسال درخواست", asEmptyState: self.currencyStats.isEmpty)
