@@ -9,6 +9,6 @@
 import Foundation
 
 enum NetworkingError: Error {
-    case badNetworkingRequest
-    case errorParse
+    case connectionIssue
+    case parsingError
 }
