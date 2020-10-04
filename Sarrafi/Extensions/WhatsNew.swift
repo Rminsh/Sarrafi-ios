@@ -10,6 +10,7 @@ import UIKit
 import WhatsNewKit
 
 extension MainController {
+	
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
@@ -40,17 +41,17 @@ extension MainController {
 
         // Customize Configuration to your needs
         configuration.backgroundColor = UIColor(named: "BackgroundColor")!
-        configuration.itemsView.subtitleFont = UIFont(name: "Shabnam-FD", size: 15)!
-        configuration.itemsView.titleFont = UIFont(name: "Shabnam-Medium-FD", size: 17)!
-        configuration.titleView.titleFont = UIFont(name: "Shabnam-Bold-FD", size: 32)!
-        configuration.completionButton.titleFont = UIFont(name: "Shabnam-FD", size: 18)!
+		configuration.itemsView.subtitleFont = .shabnam(ofSize: 15)
+		configuration.itemsView.titleFont = .shabnam(ofSize: 17, weight: .medium)
+		configuration.titleView.titleFont = .shabnam(ofSize: 32, weight: .bold)
+		configuration.completionButton.titleFont = .shabnam(ofSize: 18)
         configuration.completionButton.title = "ادامه"
 
         // Initialize WhatsNewViewController with custom configuration
         let whatsNewViewController = WhatsNewViewController(
-            whatsNew: whatsNew,
-            configuration: configuration,
-            versionStore: versionStore
+            whatsNew		: whatsNew,
+            configuration	: configuration,
+            versionStore	: versionStore
         )
         
         // Verify WhatsNewViewController is available
@@ -60,6 +61,7 @@ extension MainController {
         }
 
         // Present WhatsNewViewController
-        self.present(viewController, animated: true)
+        present(viewController, animated: true)
     }
+	
 }
