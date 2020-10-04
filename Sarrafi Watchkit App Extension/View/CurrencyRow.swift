@@ -15,7 +15,7 @@ class CurrencyRow: NSObject {
     @IBOutlet weak var percentLabel: WKInterfaceLabel!
     @IBOutlet weak var timeLabel: WKInterfaceLabel!
     
-    func updateUI (items : CurrencyModel) {
+    func updateUI(items : CurrencyModel) {
         titleLabel.setText(items.title)
         priceLabel.setText("\(items.currentPrice) \(items.toCurrency)")
         timeLabel.setText(items.updateTime)

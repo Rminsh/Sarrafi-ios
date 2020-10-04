@@ -10,54 +10,19 @@ import UIKit
 import Lottie
 import MBProgressHUD
 
-class MainController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchResultsUpdating {
+class MainController: UIViewController {
 
-    @IBOutlet weak var currencyCollection: UICollectionView!
-    @IBOutlet weak var emptyStateStackView: UIStackView!
-    @IBOutlet weak var emptyStateLabel: UILabel!
-    @IBOutlet weak var emptyStateButton: UIButton!
-    @IBOutlet weak var emptyStateLottie: AnimationView!
+    @IBOutlet weak var currencyCollection	: UICollectionView!
+    @IBOutlet weak var emptyStateStackView	: UIStackView!
+    @IBOutlet weak var emptyStateLabel		: UILabel!
+    @IBOutlet weak var emptyStateButton		: UIButton!
+    @IBOutlet weak var emptyStateLottie		: AnimationView!
     
     var refresher: UIRefreshControl!
     var currencyStats = [CurrencyModel]()
     var filteredStats: [CurrencyModel] = []
     var searching = false
     let searchController = UISearchController(searchResultsController: nil)
-    
-    // MARK: - Collection view count
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searching ? filteredStats.count : currencyStats.count
-    }
-    
-    // MARK: - Collection view cell
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "currency_cell", for: indexPath) as? CurrencyCell {
-            let _items = searching ? filteredStats[indexPath.row] : currencyStats[indexPath.row]
-            cell.updateUI(items: _items)
-            
-            return cell
-        } else {
-            return UICollectionViewCell()
-        }
-    }
-    
-    // MARK: - Collection view cell size
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let minimumWidthSize = CGFloat(157)
-        let maxWidth = collectionView.bounds.size.width
-        let maxCellPerRow = CGFloat(Int(maxWidth / minimumWidthSize))
-        let width = (maxWidth / maxCellPerRow)
-        return CGSize(width: CGFloat(width), height: CGFloat(135))
-    }
-    
-    // MARK: - Collection view on click
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "detail_vc") as! DetailController
-        vc.modalPresentationStyle = .fullScreen
-        vc.currency = searching ? filteredStats[indexPath.row] : currencyStats[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
-    }
     
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -70,7 +35,12 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
          
         emptyStateLottie.loopMode = .loop
         refresher = UIRefreshControl()
-        refresher.attributedTitle = NSAttributedString(string: "به روزرسانی اطلاعات" , attributes: [.font: UIFont(name: "Shabnam-FD", size: 12)!])
+        refresher.attributedTitle = NSAttributedString(
+			string: "به روزرسانی اطلاعات" ,
+			attributes: [
+				.font: UIFont.shabnam(ofSize: 12)
+			]
+		)
         refresher.addTarget(self, action: #selector(self.refresh), for: UIControl.Event.valueChanged)
         currencyCollection.refreshControl = refresher
         
@@ -91,31 +61,25 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - Getting Data
     func sendCurrencyRequest() {
         
-        do {
-            try CurrencyService.shared.getList { (response, error) in
-                
-                if let error = error {
-                    switch error {
-                    case NetworkingError.badNetworkingRequest:
-                        self.showError(error: "خطا در ارسال درخواست", asEmptyState: self.currencyStats.isEmpty)
-                    case NetworkingError.errorParse:
-                        self.showError(error: "خطا در بارگزاری اطلاعات", asEmptyState: self.currencyStats.isEmpty)
-                    default:
-                        self.showError(error: "خطا", asEmptyState: self.currencyStats.isEmpty)
-                    }
-                } else {
-                    if let result = response?.currencyStats {
-                        self.currencyStats = result
-                        self.currencyCollection.reloadData()
-                        self.emptyStateLottie.stop()
-                        self.refresher.endRefreshing()
-                        self.emptyStateStackView.isHidden = true
-                    }
-                }
-            }
-        } catch {
-            self.showError(error: "خطا در ارسال درخواست", asEmptyState: self.currencyStats.isEmpty)
-        }
+		CurrencyService.shared.getList { (result) in
+			
+			switch result {
+			case .failure(let error):
+				switch error {
+				case .connectionIssue:
+					self.showError(error: "خطا در ارسال درخواست", asEmptyState: self.currencyStats.isEmpty)
+				case .parsingError:
+					self.showError(error: "خطا در بارگزاری اطلاعات", asEmptyState: self.currencyStats.isEmpty)
+				}
+			case .success(let response):
+				let stats = response.currencyStats
+				self.currencyStats = stats
+				self.currencyCollection.reloadData()
+				self.emptyStateLottie.stop()
+				self.refresher.endRefreshing()
+				self.emptyStateStackView.isHidden = true
+			}
+		}
     }
     
     // MARK: - UI Show Loading
@@ -140,7 +104,12 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
             let hudInternet = MBProgressHUD.showAdded(to: self.view, animated: true)
             hudInternet.mode = MBProgressHUDMode.customView
             hudInternet.customView = UIImageView(image: #imageLiteral(resourceName: "ic_error"))
-            hudInternet.label.attributedText = NSAttributedString(string: error , attributes: [.font: UIFont(name: "Shabnam-FD", size: 14)!])
+            hudInternet.label.attributedText = NSAttributedString(
+				string: error,
+				attributes: [
+					.font: UIFont.shabnam(ofSize: 14)
+				]
+			)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
                 hudInternet.hide(animated: true)
@@ -168,10 +137,57 @@ class MainController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
-    // MARK: - Search result update
-    func updateSearchResults(for searchController: UISearchController) {
-        filteredStats = currencyStats.filter({$0.title.prefix(searchController.searchBar.text!.count) == searchController.searchBar.text!})
-        searching = true
-        currencyCollection.reloadData()
-    }
 }
+
+extension MainController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+	
+	// MARK: - Collection view count
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return searching ? filteredStats.count : currencyStats.count
+	}
+	
+	// MARK: - Collection view cell
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "currency_cell", for: indexPath) as? CurrencyCell {
+			let _items = searching ? filteredStats[indexPath.row] : currencyStats[indexPath.row]
+			cell.updateUI(items: _items)
+			
+			return cell
+		} else {
+			return UICollectionViewCell()
+		}
+	}
+	
+	// MARK: - Collection view cell size
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+		let minimumWidthSize = CGFloat(157)
+		let maxWidth = collectionView.bounds.size.width
+		let maxCellPerRow = CGFloat(Int(maxWidth / minimumWidthSize))
+		let width = (maxWidth / maxCellPerRow)
+		return CGSize(width: CGFloat(width), height: CGFloat(135))
+	}
+	
+	// MARK: - Collection view on click
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+		let vc = storyBoard.instantiateViewController(withIdentifier: "detail_vc") as! DetailController
+		vc.modalPresentationStyle = .fullScreen
+		vc.currency = searching ? filteredStats[indexPath.row] : currencyStats[indexPath.row]
+		navigationController?.pushViewController(vc, animated: true)
+	}
+	
+}
+
+extension MainController: UISearchResultsUpdating {
+	
+	// MARK: - Search result update
+	func updateSearchResults(for searchController: UISearchController) {
+		filteredStats = currencyStats.filter {
+			$0.title.prefix(searchController.searchBar.text!.count) == searchController.searchBar.text!
+		}
+		searching = true
+		currencyCollection.reloadData()
+	}
+	
+}
+

@@ -13,32 +13,19 @@ import Charts
 
 class DetailController: UIViewController {
 
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var updateLabel: UILabel!
-    @IBOutlet weak var chartSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var priceChangeLabel: UILabel!
-    @IBOutlet weak var percentChangeProgress: UICircularProgressRing!
-    @IBOutlet weak var priceHighLabel: UILabel!
-    @IBOutlet weak var priceLowLabel: UILabel!
-    @IBOutlet weak var chartActivityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var chart: LineChartView!
+    @IBOutlet weak var priceLabel				: UILabel!
+    @IBOutlet weak var updateLabel				: UILabel!
+    @IBOutlet weak var chartSegmentedControl	: UISegmentedControl!
+    @IBOutlet weak var priceChangeLabel			: UILabel!
+    @IBOutlet weak var percentChangeProgress	: UICircularProgressRing!
+    @IBOutlet weak var priceHighLabel			: UILabel!
+    @IBOutlet weak var priceLowLabel			: UILabel!
+    @IBOutlet weak var chartActivityIndicator	: UIActivityIndicatorView!
+    @IBOutlet weak var chart					: LineChartView!
     
     var currency: CurrencyModel!
     
-    var dateMonthly = [String]()
-    var pricesMonthly = [Double]()
-    
-    var dateDaily = [String]()
-    var pricesThreeMonths = [Double]()
-    
-    var dateThreeMonths = [String]()
-    var pricesDaily = [Double]()
-    
-    var dateSixMonths = [String]()
-    var pricesSixMonths = [Double]()
-    
-    var dateAllMonths = [String]()
-    var pricesAllMonths = [Double]()
+	var chartsObject: Charts? = nil
     
     @IBAction func filterIndexChanged(_ sender: Any) {
         loadFilters()
@@ -53,8 +40,14 @@ class DetailController: UIViewController {
     
     func setupInterface() {
         self.title = currency.title
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_share"), style: .done, target: self, action: #selector(shareItem))
-        chartSegmentedControl.setTitleTextAttributes([.font: UIFont(name: "Shabnam-FD", size: 12)!], for: UIControl.State.normal)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+			image: #imageLiteral(resourceName: "ic_share"),
+			style: .done,
+			target: self,
+			action: #selector(shareItem)
+		)
+		
+		chartSegmentedControl.setTitleTextAttributes([.font: UIFont.shabnam(ofSize: 12)], for: .normal)
         
         priceLabel.text = "\(currency.currentPrice) \(currency.toCurrency)"
         updateLabel.text = "آخرین به‌روزرسانی \(currency.updateTime)"
@@ -100,141 +93,72 @@ class DetailController: UIViewController {
         chart.xAxis.drawGridLinesEnabled = false
         chart.xAxis.labelPosition = XAxis.LabelPosition.bottom
         chart.noDataText = "هیچ دیتایی موجود نیست"
-        chart.noDataFont = UIFont(name: "Shabnam-FD", size: 14)!
+		chart.noDataFont = .shabnam(ofSize: 14)
         
     }
     
     func sendGetTableRequest() {
-        /**
-         Get table
-         get https://www.tgju.org/
-         */
-
-        // Add URL parameters
-        let urlParams = [
-            "act":"chart-api",
-            "noview":"null",
-            "client":"app",
-            "appversion":"3",
-            "name": currency.object,
-        ]
-
-        // Fetch Request
-        AF.request("https://www.tgju.org/", method: .get, parameters: urlParams, headers: nil)
-            .validate(statusCode: 200..<300)
-            .responseJSON { response in
-                switch response.result {
-                case .success:
-                    do {
-                        let decoder = try JSONDecoder().decode(ChartStruct.self, from: response.data!)
-                        
-                        // TODO: Today Chart has slow performance on UI
-                        // Get Today chart
-                        /* for item in decoder.today_table.reversed() {
-                            let price = Double(item.price.replacingOccurrences(of: ",", with: "", options: .literal, range: nil))
-                            self.dateDaily.append(item.time)
-                            self.pricesDaily.append(price!)
-                        }*/
-                        
-                        // Get Monthly Chart
-                        let chart_1 = "[" + decoder.chart_1.replaceFirst(of: ".$", with: "") + "]"
-                        let chart_1_data = chart_1.data(using: .utf8)
-                        let decoder_chart_1 = try JSONDecoder().decode([NormalTable].self, from: chart_1_data!)
-                        for item in decoder_chart_1 {
-                            self.dateMonthly.append(String(item.jdate.suffix(5)))
-                            self.pricesMonthly.append(item.value)
-                        }
-                        
-                        // Get 3 Months Chart
-                        let chart_3 = "[" + decoder.chart_3.replaceFirst(of: ".$", with: "") + "]"
-                        let chart_3_data = chart_3.data(using: .utf8)
-                        let decoder_chart_3 = try JSONDecoder().decode([NormalTable].self, from: chart_3_data!)
-                        for item in decoder_chart_3 {
-                            self.dateThreeMonths.append(String(item.jdate.suffix(5)))
-                            self.pricesThreeMonths.append(item.value)
-                        }
-                        
-                        // Get 6 Months Chart
-                        let chart_6 = "[" + decoder.chart_6.replaceFirst(of: ".$", with: "") + "]"
-                        let chart_6_data = chart_6.data(using: .utf8)
-                        let decoder_chart_6 = try JSONDecoder().decode([NormalTable].self, from: chart_6_data!)
-                        for item in decoder_chart_6 {
-                            self.dateSixMonths.append(String(item.jdate.suffix(5)))
-                            self.pricesSixMonths.append(item.value)
-                        }
-                        
-                        //Get Chart Summery
-                        let chart_summary = "[" + decoder.chart_summary + "]"
-                        let chart_summary_data = chart_summary.data(using: .utf8)
-                        let decoder_chart_summary = try JSONDecoder().decode([NormalTable].self, from: chart_summary_data!)
-                        for item in decoder_chart_summary {
-                            self.dateAllMonths.append(String(item.jdate.prefix(7)))
-                            self.pricesAllMonths.append(item.value)
-                        }
-                        
-                        self.loadFilters()
-                        
-                    } catch {
-                        print(error)
-                        self.showChart()
-                    }
-                case .failure:
-                    print("Error")
-                    self.showChart()
-                }
-        }
+		CurrencyService.shared.getChart(for: currency) { (result) in
+			switch result {
+			case .success(let charts):
+				self.chartsObject = charts
+				self.loadFilters()
+			case .failure(let error):
+				print(error)
+				self.showChart()
+			}
+		}
     }
     
     func loadFilters() {
+		guard let chartsObject = chartsObject else { return }
         switch chartSegmentedControl.selectedSegmentIndex {
         case 0:
             // Today chart
-            setDataChart(date: dateDaily, price: pricesDaily)
-            break
+			setDataChart(with: chartsObject.day)
         case 1:
             // Monthly Chart
-            setDataChart(date: dateMonthly, price: pricesMonthly)
+			setDataChart(with: chartsObject.month)
         case 2:
             // 3 Months Chart
-            setDataChart(date: dateThreeMonths, price: pricesThreeMonths)
+			setDataChart(with: chartsObject.threeMonths)
         case 3:
             // 6 Months Chart
-            setDataChart(date: dateSixMonths, price: pricesSixMonths)
+			setDataChart(with: chartsObject.sixMonths)
         case 4:
             // Chart Summery
-            setDataChart(date: dateAllMonths, price: pricesAllMonths)
+			setDataChart(with: chartsObject.summary)
             
         default:
             break
         }
     }
     
-    func setDataChart(date: [String], price: [Double]) {
-        
+	func setDataChart(with chartItem: ChartItem) {
         // Set xAxis
         DispatchQueue.main.async {
             let xAxis = self.chart.xAxis
             xAxis.avoidFirstLastClippingEnabled = false
-            xAxis.valueFormatter = IndexAxisValueFormatter(values: date)
-            let marker:BalloonMarker = BalloonMarker(
-                date: date,
-                priceType: self.currency.toCurrency,
-                color: UIColor(named: "Accent")!,
-                font: UIFont(name: "Shabnam-FD", size: 12)!,
-                textColor: UIColor.white,
-                insets: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 25.0, right: 7.0
-            ))
-             marker.minimumSize = CGSize(width: 75.0, height: 35.0)//CGSize(75.0, 35.0)
+			xAxis.valueFormatter = IndexAxisValueFormatter(values: chartItem.dates)
+            let marker = BalloonMarker(
+				date		: chartItem.dates,
+                priceType	: self.currency.toCurrency,
+                color		: UIColor(named: "Accent")!,
+				font		: .shabnam(ofSize: 12),
+                textColor	: .white,
+                insets		: UIEdgeInsets(top: 7.0, left: 7.0, bottom: 25.0, right: 7.0)
+			)
+			marker.minimumSize = CGSize(width: 75.0, height: 35.0)
             self.chart.marker = marker
         }
         
         // Set yAxis
         DispatchQueue.main.async {
             var dataEntry = [ChartDataEntry]()
-            let circleStatus = price.count <= 90
+			let circleStatus = chartItem.prices.count <= 90
             
-            for item in 0..<price.count {
-                dataEntry.append(ChartDataEntry(x: Double(item), y: price[item]))
+			for item in 0..<chartItem.prices.count {
+				dataEntry.append(ChartDataEntry(x: Double(item), y: chartItem.prices[item]))
             }
             
             let lineDataSet = LineChartDataSet(entries: dataEntry, label: "")
@@ -245,7 +169,7 @@ class DetailController: UIViewController {
             lineDataSet.setCircleColor(UIColor(named: "Accent")!)
             lineDataSet.setColor(UIColor(named: "Accent")!)
             lineDataSet.circleRadius = 6
-            lineDataSet.circleHoleColor = UIColor.white
+            lineDataSet.circleHoleColor = .white
             lineDataSet.circleHoleRadius = 4
             lineDataSet.drawValuesEnabled = false
             lineDataSet.drawHorizontalHighlightIndicatorEnabled = false
@@ -262,20 +186,19 @@ class DetailController: UIViewController {
     }
     
     func showChart() {
-        self.chartActivityIndicator.isHidden = true
-        self.chart.isHidden = false
+        chartActivityIndicator.isHidden = true
+        chart.isHidden = false
         chartSegmentedControl.isEnabled = true
     }
 
-    @objc func shareItem() {
+    @objc
+	func shareItem() {
         var changeStatus = ""
         switch currency.status {
         case "high":
             changeStatus = "افزایش"
-            break
         case "low":
             changeStatus = "کاهش"
-            break
         default:
             break
         }
@@ -286,6 +209,18 @@ class DetailController: UIViewController {
         let pricePercentChangeText = "📊 " + "درصد تغییرات قیمت: " + changeStatus + currency.percentChange
         let timeText = "🕰 " + updateLabel.text!
         let appAd = "اپ صرافی"
-        shareText(text: headerText + "\n" + priceUpText + "\n" + priceDownText + "\n" + priceChangeText + "\n" + pricePercentChangeText + "\n" + timeText + "\n" + appAd , viewController: self)
+		
+		let finalText = [
+			headerText,
+			priceUpText,
+			priceDownText,
+			priceChangeText,
+			pricePercentChangeText,
+			timeText,
+			appAd
+		].joined(separator: "\n")
+		
+        shareText(text: finalText, viewController: self)
     }
+	
 }

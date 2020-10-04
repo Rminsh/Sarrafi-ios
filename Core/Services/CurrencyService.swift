@@ -12,9 +12,10 @@ import Alamofire
 class CurrencyService {
     
     static let shared = CurrencyService()
+	
     private init() {}
     
-    func getList(completion: @escaping (CurrencyListResponse?, Error?)-> Void) throws {
+    func getList(completion: @escaping (Result<CurrencyListResponse, NetworkingError>)-> Void) {
         
         /**
          Currency List
@@ -22,35 +23,38 @@ class CurrencyService {
          */
         
         let configuration = URLSessionConfiguration.default
-        configuration.requestCachePolicy = . reloadIgnoringLocalAndRemoteCacheData
+        configuration.requestCachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         
-        var req = URLRequest(url: URL(string: "https://call.tgju.org/ajax.json")!)
-        req.httpMethod = "GET"
-        req.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        req.setValue("application/json", forHTTPHeaderField: "Accept")
-        req.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+        var request = URLRequest(url: URL(string: "https://call.tgju.org/ajax.json")!)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
         
         // Fetch Request
-        AF.request(req)
+        AF.request(request)
             .validate(statusCode: 200..<300)
             .responseJSON { response in
                 switch response.result {
                 case .success:
                     guard let data = response.data else {
-                        completion(nil, NetworkingError.badNetworkingRequest)
+						completion(.failure(.connectionIssue))
                         return
                     }
+					
                     do {
-                        let decoder = try JSONDecoder().decode(CurrencyStruct.self, from: data)
-                        let result = CurrencyListResponse(currencyStruct: decoder)
-                        completion(result, nil)
+                        let currencyStruct = try JSONDecoder().decode(CurrencyStruct.self, from: data)
+                        let result = CurrencyListResponse(currencyStruct: currencyStruct)
+						completion(.success(result))
                     } catch {
                         print(error)
-                        completion(nil, NetworkingError.errorParse)
+						completion(.failure(.parsingError))
                     }
                 case .failure:
-                    completion(nil, NetworkingError.badNetworkingRequest)
+					completion(.failure(.connectionIssue))
                 }
         }
     }
+	
+	
 }

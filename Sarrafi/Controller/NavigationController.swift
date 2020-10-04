@@ -13,29 +13,35 @@ class NavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont(name: "Shabnam-FD", size: 15)!], for: .normal)
-        UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont(name: "Shabnam-FD", size: 15)!], for: .highlighted)
-        UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont(name: "Shabnam-FD", size: 10)!], for: .normal)
+		UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont.shabnam(ofSize: 15)], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([.font: UIFont.shabnam(ofSize: 15)], for: .highlighted)
+		UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "لغو"
+		
+        UITabBarItem.appearance().setTitleTextAttributes([.font: UIFont.shabnam(ofSize: 10)], for: .normal)
         
         let titleParagraphStyle = NSMutableParagraphStyle()
         titleParagraphStyle.alignment = .center
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = NSAttributedString(
-            string: "جست و جو", attributes: [.font: UIFont(name: "Shabnam-FD", size: 15)!, .paragraphStyle: titleParagraphStyle])
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [.font: UIFont(name: "Shabnam-FD", size: 15)!]
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "لغو"
+            string: "جست و جو",
+			attributes: [
+				.font: UIFont.shabnam(ofSize: 15),
+				.paragraphStyle: titleParagraphStyle
+			]
+		)
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [
+			.font: UIFont.shabnam(ofSize: 15)
+		]
         
         if #available(iOS 13.0, *) {
-            let navigationTitleFont = UIFont(name: "Shabnam-FD", size: 18)!
-            let navigationLargeTitleFont = UIFont(name: "Shabnam-Medium-FD", size: 32)!
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = UIColor(named: "BackgroundColor")
-            appearance.titleTextAttributes = [.font: navigationTitleFont]
-            appearance.largeTitleTextAttributes = [.font: navigationLargeTitleFont]
+            appearance.titleTextAttributes = [.font: UIFont.shabnam(ofSize: 18)]
+            appearance.largeTitleTextAttributes = [.font: UIFont.shabnam(ofSize: 32, weight: .medium)]
             
             // NAV BUTTON STYLING
             let button = UIBarButtonItemAppearance(style: .plain)
-            button.normal.titleTextAttributes = [.font: UIFont(name: "Shabnam-FD", size: 18)!]
+            button.normal.titleTextAttributes = [.font: UIFont.shabnam(ofSize: 18)]
             appearance.buttonAppearance = button
             
             //Remove NavigationBar Border
@@ -46,8 +52,8 @@ class NavigationController: UINavigationController {
             self.navigationBar.compactAppearance = appearance // For iPhone small navigation bar in landscape.
             
         } else {
-            self.navigationBar.titleTextAttributes = [.font: UIFont(name: "Shabnam-FD", size: 18)!]
-            self.navigationBar.largeTitleTextAttributes = [.font: UIFont(name: "Shabnam-Medium-FD", size: 32)!]
+            self.navigationBar.titleTextAttributes = [.font: UIFont.shabnam(ofSize: 18)]
+			self.navigationBar.largeTitleTextAttributes = [.font: UIFont.shabnam(ofSize: 32, weight: .medium)]
             
             //Remove NavigationBar Border
             self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
